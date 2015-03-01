@@ -8,7 +8,7 @@
 
 import Foundation
 
-let net = Net(baseUrlString: "http://taxi5.by/")
+let net = Net(baseUrlString: "http://x9.sandbox.hcbogdan.com/")
 var instance: Server?
 
 class Server
@@ -30,27 +30,103 @@ class Server
         return Static.instance!
     }
     
-    func getAddress(text: String)
+    func Authorization(username: String, password: String)
     {
-        let url = "api/locator/search"
-        let params = ["q": "воло"]
+        let url = "api/login"
+        let params = ["username": username, "password": password]
         
         net.GET(url, params: params, successHandler:
             { responseData in
-                let result = responseData.data
-                var string1 = NSString(data: result, encoding: NSUTF8StringEncoding)
-                var JSONArray: NSArray = NSJSONSerialization.JSONObjectWithData(responseData.data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSArray
+                let jsonDic: NSDictionary = responseData.json(error: nil)!
                 
-                //            FoundPlaceObjects.sharedInstance.parsePlaceObjects(JSONArray)
+//                println(jsonDic)
+                var string1 = NSString(data: responseData.data, encoding: NSUTF8StringEncoding)
+                println(string1)
                 
-                NSNotificationCenter.defaultCenter().postNotificationName("loadStreets", object: nil, userInfo: ["info" : "\(string1)"])
-                //            println(JSONArray)
+                self.saveCookies()
             })
             { (error) -> () in
-                //            println(error)
+                println("error: \(error)")
         }
     }
     
+    func Logout()
+    {
+        let url = "api/logout"
+        self.loadCookies()
+        net.GET(url, params: nil, successHandler:
+            { (responseData) -> () in
+            
+        }) { (error) -> () in
+            println("error: \(error)")
+        }
+    }
+    
+    func Register(personName: String, location: String, username: String, password: String, smsCode: String)
+    {
+        let url = "api/register"
+        let params = ["personname": personName, "location": location, "username": username, "password": password, "sms": smsCode]
+        net.POST(url, params: params, successHandler:
+            { (responseData) -> () in
+                let jsonDic: NSDictionary = responseData.json(error: nil)!
+                var string1 = NSString(data: responseData.data, encoding: NSUTF8StringEncoding)
+                println(string1)
+                if(jsonDic.objectForKey("status") as String == "ok")
+                {
+                    println(jsonDic)
+                    NSNotificationCenter.defaultCenter().postNotificationName("registersuccesfully", object: nil)
+                }
+                else
+                {
+                    NSNotificationCenter.defaultCenter().postNotificationName("registererror", object: nil)
+                }
+                
+            }) { (error) -> () in
+                println("error: \(error)")
+        }
+    }
+    
+    func SendSMS(phoneNumber: String)
+    {
+        let url = "api/smsCode"
+        let params = ["phone": phoneNumber]
+        
+        net.GET(url, params: params, successHandler:
+        { (responseData) -> () in
+            let jsonDic: NSDictionary = responseData.json(error: nil)!
+            if(jsonDic.objectForKey("status") as String == "ok")
+            {
+                println(jsonDic)
+                NSNotificationCenter.defaultCenter().postNotificationName("smssend", object: nil)
+            }
+            else
+            {
+                NSNotificationCenter.defaultCenter().postNotificationName("smssenderror", object: nil)
+            }
+        })
+        { (error) -> () in
+            NSNotificationCenter.defaultCenter().postNotificationName("smssenderror", object: nil)
+        }
+    }
+    
+    func SessionUpdate()
+    {
+        let url = "api/personalInfo"
+        self.loadCookies()
+        net.GET(url, params: nil, successHandler:
+            { (responseData) -> () in
+                let jsonDic: NSDictionary = responseData.json(error: nil)!
+                var string1 = NSString(data: responseData.data, encoding: NSUTF8StringEncoding)
+                println(string1)
+                if(jsonDic.objectForKey("status") as String == "fail")
+                {
+                    println("Relogin")
+                }
+                
+            }) { (error) -> () in
+                println("error: \(error)")
+        }
+    }
     
     //MARK: -
     //MARK: work with cookies

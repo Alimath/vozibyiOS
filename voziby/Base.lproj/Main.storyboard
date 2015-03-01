@@ -1,25 +1,343 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JH0-Em-3ZY">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Base View-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="BaseView" customModule="voziby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Whw-LW-ylL"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="234" y="352"/>
+        </scene>
+        <!--Login View-->
+        <scene sceneID="kvP-Zr-GWK">
+            <objects>
+                <viewController storyboardIdentifier="LoginView" id="Lj9-xX-JZK" customClass="LoginView" customModule="voziby" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BC5-RN-5SH"/>
+                        <viewControllerLayoutGuide type="bottom" id="36n-dy-dR2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VlO-LX-BjO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Номер телефона" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Thh-0K-qq9" customClass="TextFieldWithMargin" customModule="voziby" customModuleProvider="target">
+                                <rect key="frame" x="21" y="106" width="280" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Jrh-xo-6Rm"/>
+                                    <constraint firstAttribute="width" constant="280" id="gio-uQ-Ows"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="yes" keyboardType="phonePad" returnKeyType="next"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="Lj9-xX-JZK" id="QyM-1E-QrJ"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qfl-C0-aOw" customClass="TextFieldWithMargin" customModule="voziby" customModuleProvider="target">
+                                <rect key="frame" x="21" y="160" width="280" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="NaZ-lc-yx3"/>
+                                    <constraint firstAttribute="height" constant="44" id="WhJ-L8-cYw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="Lj9-xX-JZK" id="xLo-6P-lsA"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Co1-8y-cL6">
+                                <rect key="frame" x="161" y="224" width="120" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="rpB-Hq-wNz"/>
+                                    <constraint firstAttribute="width" constant="120" id="tg0-nH-4MD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Забыли пароль?">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxS-KY-i4m">
+                                <rect key="frame" x="41" y="224" width="95" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="95" id="JZS-L6-69o"/>
+                                    <constraint firstAttribute="height" constant="30" id="h5j-O4-2Sw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Регистрация">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="hzq-ox-0ha" kind="show" identifier="" id="oms-3m-SaV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="qfl-C0-aOw" secondAttribute="centerX" constant="-0.5" id="3TB-d3-Y0r"/>
+                            <constraint firstItem="wxS-KY-i4m" firstAttribute="top" secondItem="qfl-C0-aOw" secondAttribute="bottom" constant="20" id="Fdc-0A-FlL"/>
+                            <constraint firstItem="36n-dy-dR2" firstAttribute="top" secondItem="Thh-0K-qq9" secondAttribute="bottom" constant="346" id="GSe-S9-Z1q"/>
+                            <constraint firstItem="Co1-8y-cL6" firstAttribute="top" secondItem="qfl-C0-aOw" secondAttribute="bottom" constant="20" id="Otj-Zk-LNz"/>
+                            <constraint firstAttribute="centerX" secondItem="Thh-0K-qq9" secondAttribute="centerX" constant="-0.5" id="Vh2-3i-jGy"/>
+                            <constraint firstItem="36n-dy-dR2" firstAttribute="top" secondItem="qfl-C0-aOw" secondAttribute="bottom" constant="300" id="ZIH-9n-pDn"/>
+                            <constraint firstItem="qfl-C0-aOw" firstAttribute="top" secondItem="Thh-0K-qq9" secondAttribute="bottom" constant="10" id="hyq-Kb-dKC"/>
+                            <constraint firstItem="wxS-KY-i4m" firstAttribute="leading" secondItem="qfl-C0-aOw" secondAttribute="leading" constant="20" id="oRN-Jc-4cc"/>
+                            <constraint firstItem="qfl-C0-aOw" firstAttribute="trailing" secondItem="Co1-8y-cL6" secondAttribute="trailing" constant="20" id="xF0-lj-mud"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="GSe-S9-Z1q"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="yNa-FX-cmW"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                    <connections>
+                        <outlet property="passwordTextField" destination="qfl-C0-aOw" id="Zh7-Ev-zvr"/>
+                        <outlet property="phoneNumberTextField" destination="Thh-0K-qq9" id="eNV-Qc-KSe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kkc-dm-jox" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="934" y="-305"/>
+        </scene>
+        <!--Registraion View-->
+        <scene sceneID="950-AZ-cLU">
+            <objects>
+                <viewController id="hzq-ox-0ha" customClass="RegistraionView" customModule="voziby" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mj6-29-2Fk"/>
+                        <viewControllerLayoutGuide type="bottom" id="L7g-Vy-dp9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dZV-SV-As2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Введите ваш город" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gdT-FP-LVy" customClass="TextFieldWithMargin" customModule="voziby" customModuleProvider="target">
+                                <rect key="frame" x="20" y="114" width="280" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="JQY-cX-KRX"/>
+                                    <constraint firstAttribute="width" constant="280" id="YIb-J0-hRH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="go"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Номер телефона" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R4C-6d-9gR" customClass="TextFieldWithMargin" customModule="voziby" customModuleProvider="target">
+                                <rect key="frame" x="20" y="166" width="180" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="EZ2-TR-uvJ"/>
+                                    <constraint firstAttribute="height" constant="44" id="fkB-xh-xvH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="hzq-ox-0ha" id="k3W-6Z-BIk"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="PXL-sd-Bpn" userLabel="smscode" customClass="TextFieldWithMargin" customModule="voziby" customModuleProvider="target">
+                                <rect key="frame" x="210" y="166" width="90" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="2gA-Kl-asG"/>
+                                    <constraint firstAttribute="height" constant="44" id="vDR-Mi-6FW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J2O-qB-bzW" userLabel="getsmsButton">
+                                <rect key="frame" x="260" y="168" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="28P-L7-DhJ"/>
+                                    <constraint firstAttribute="width" constant="40" id="svC-Fi-xOT"/>
+                                </constraints>
+                                <state key="normal" image="getsms">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="SMSSendTouch:" destination="hzq-ox-0ha" eventType="touchUpInside" id="Pjt-gN-8WJ"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="82q-Pv-jUm" customClass="TextFieldWithMargin" customModule="voziby" customModuleProvider="target">
+                                <rect key="frame" x="20" y="220" width="280" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="hzq-ox-0ha" id="XwN-HB-psc"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="82q-Pv-jUm" firstAttribute="leading" secondItem="gdT-FP-LVy" secondAttribute="leading" id="5qY-CY-jnz"/>
+                            <constraint firstItem="R4C-6d-9gR" firstAttribute="top" secondItem="gdT-FP-LVy" secondAttribute="bottom" constant="8" id="7Ge-aq-rho"/>
+                            <constraint firstItem="PXL-sd-Bpn" firstAttribute="trailing" secondItem="J2O-qB-bzW" secondAttribute="trailing" id="96N-dC-J4l"/>
+                            <constraint firstItem="PXL-sd-Bpn" firstAttribute="trailing" secondItem="gdT-FP-LVy" secondAttribute="trailing" id="Arm-5G-Kn6"/>
+                            <constraint firstItem="gdT-FP-LVy" firstAttribute="top" secondItem="mj6-29-2Fk" secondAttribute="bottom" constant="50" id="U0b-6D-Fhw"/>
+                            <constraint firstItem="gdT-FP-LVy" firstAttribute="leading" secondItem="R4C-6d-9gR" secondAttribute="leading" id="U5c-3q-j3J"/>
+                            <constraint firstAttribute="centerX" secondItem="gdT-FP-LVy" secondAttribute="centerX" id="bM6-cR-EDa"/>
+                            <constraint firstItem="82q-Pv-jUm" firstAttribute="height" secondItem="gdT-FP-LVy" secondAttribute="height" id="jfR-Eh-Pd6"/>
+                            <constraint firstItem="PXL-sd-Bpn" firstAttribute="centerY" secondItem="R4C-6d-9gR" secondAttribute="centerY" id="lao-Cv-nWF"/>
+                            <constraint firstItem="82q-Pv-jUm" firstAttribute="width" secondItem="gdT-FP-LVy" secondAttribute="width" id="lcc-Sw-xu5"/>
+                            <constraint firstItem="PXL-sd-Bpn" firstAttribute="centerY" secondItem="J2O-qB-bzW" secondAttribute="centerY" id="zgW-9w-G67"/>
+                            <constraint firstItem="82q-Pv-jUm" firstAttribute="top" secondItem="R4C-6d-9gR" secondAttribute="bottom" constant="10" id="zl9-N9-Ati"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                    <connections>
+                        <outlet property="CityTextField" destination="gdT-FP-LVy" id="jzg-dt-lvv"/>
+                        <outlet property="GetSMSButton" destination="J2O-qB-bzW" id="6U7-uv-F6A"/>
+                        <outlet property="PasswordTextField" destination="82q-Pv-jUm" id="iWn-Um-zlu"/>
+                        <outlet property="SMSTextField" destination="PXL-sd-Bpn" id="wQn-U2-New"/>
+                        <outlet property="phoneNumberTextField" destination="R4C-6d-9gR" id="UYq-F6-JGy"/>
+                        <outlet property="registrationView" destination="dZV-SV-As2" id="HPK-b8-xkD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YZU-cU-A2m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1300" y="-305"/>
+        </scene>
+        <!--Registraion View End-->
+        <scene sceneID="IGd-qv-2X2">
+            <objects>
+                <viewController storyboardIdentifier="RegistraionViewEnd" id="uNm-dC-McK" customClass="RegistraionViewEnd" customModule="voziby" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wM8-Un-GxO"/>
+                        <viewControllerLayoutGuide type="bottom" id="yf6-NV-KMo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0ND-4i-xx3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Осталось ввести Ваше имя и готово!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rge-T2-gNM">
+                                <rect key="frame" x="70" y="20" width="180" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="VTQ-BS-doF"/>
+                                    <constraint firstAttribute="width" constant="180" id="cV3-eK-Xnp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ваше имя" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Cy-bA-yo6" customClass="TextFieldWithMargin" customModule="voziby" customModuleProvider="target">
+                                <rect key="frame" x="20" y="100" width="280" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Rgg-rj-rOZ"/>
+                                    <constraint firstAttribute="width" constant="280" id="bQh-Sa-4iS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="rge-T2-gNM" secondAttribute="centerX" id="AJB-gk-Ae4"/>
+                            <constraint firstItem="rge-T2-gNM" firstAttribute="top" secondItem="wM8-Un-GxO" secondAttribute="bottom" constant="20" id="ZBz-UG-bdS"/>
+                            <constraint firstAttribute="centerX" secondItem="8Cy-bA-yo6" secondAttribute="centerX" id="pb3-T1-9aa"/>
+                            <constraint firstItem="8Cy-bA-yo6" firstAttribute="top" secondItem="rge-T2-gNM" secondAttribute="bottom" constant="20" id="siB-fN-RJb"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                    <connections>
+                        <outlet property="NameTextField" destination="8Cy-bA-yo6" id="ky9-vW-BUk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QrQ-zw-oPM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1718" y="-305"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OLc-60-ACK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JH0-Em-3ZY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Nzd-Gg-nWm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Lj9-xX-JZK" kind="relationship" relationship="rootViewController" id="bwh-op-5Oq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iy0-r9-9EI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="234" y="-359"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="getsms" width="135" height="135"/>
+    </resources>
 </document>
