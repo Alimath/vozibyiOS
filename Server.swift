@@ -145,11 +145,18 @@ class Server
     {
         var defaults = NSUserDefaults.standardUserDefaults()
         var cookiesData: AnyObject? = defaults.objectForKey("sessionCookies")
-        var cookies: NSArray! = NSKeyedUnarchiver.unarchiveObjectWithData(cookiesData as NSData) as? NSArray
-        var cookieStorage: NSHTTPCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
-        for cookie in cookies
+        if(cookiesData != nil)
         {
-            cookieStorage.setCookie(cookie as NSHTTPCookie)
+            var cookiesDataUnarchived: AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithData(cookiesData as NSData)
+            if((cookiesDataUnarchived) != nil)
+            {
+                var cookies: NSArray! = cookiesDataUnarchived as NSArray
+                var cookieStorage: NSHTTPCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+                for cookie in cookies
+                {
+                    cookieStorage.setCookie(cookie as NSHTTPCookie)
+                }
+            }
         }
     }
 }

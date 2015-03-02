@@ -13,7 +13,7 @@
         <!--Base View-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="BaseView" customModule="voziby" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BaseView" id="BYZ-38-t0r" customClass="BaseView" customModule="voziby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -30,7 +30,43 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="234" y="352"/>
+            <point key="canvasLocation" x="582" y="404"/>
+        </scene>
+        <!--Menu View-->
+        <scene sceneID="EXd-J2-8WH">
+            <objects>
+                <viewController storyboardIdentifier="MenuView" id="EGv-BG-dtk" customClass="MenuView" customModule="voziby" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xO9-IA-TXV"/>
+                        <viewControllerLayoutGuide type="bottom" id="daA-ih-rnn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vNc-ex-Mrq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2N-iq-R3g">
+                                <rect key="frame" x="137" y="71" width="43" height="30"/>
+                                <state key="normal" title="11111">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hk7-47-RIs">
+                                <rect key="frame" x="137" y="133" width="43" height="30"/>
+                                <state key="normal" title="22222">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vlz-hz-ItO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="963" y="398"/>
         </scene>
         <!--Login View-->
         <scene sceneID="kvP-Zr-GWK">
@@ -91,6 +127,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="CNg-lW-r6M" kind="show" id="GRM-yb-wHy"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxS-KY-i4m">
                                 <rect key="frame" x="41" y="224" width="95" height="30"/>
@@ -142,17 +181,17 @@
         <!--Registraion View-->
         <scene sceneID="950-AZ-cLU">
             <objects>
-                <viewController id="hzq-ox-0ha" customClass="RegistraionView" customModule="voziby" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegistraionView" id="hzq-ox-0ha" customClass="RegistraionView" customModule="voziby" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mj6-29-2Fk"/>
                         <viewControllerLayoutGuide type="bottom" id="L7g-Vy-dp9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dZV-SV-As2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Введите ваш город" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gdT-FP-LVy" customClass="TextFieldWithMargin" customModule="voziby" customModuleProvider="target">
-                                <rect key="frame" x="20" y="114" width="280" height="44"/>
+                                <rect key="frame" x="20" y="50" width="280" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="JQY-cX-KRX"/>
@@ -167,7 +206,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Номер телефона" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R4C-6d-9gR" customClass="TextFieldWithMargin" customModule="voziby" customModuleProvider="target">
-                                <rect key="frame" x="20" y="166" width="180" height="44"/>
+                                <rect key="frame" x="20" y="102" width="180" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="EZ2-TR-uvJ"/>
@@ -185,7 +224,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="PXL-sd-Bpn" userLabel="smscode" customClass="TextFieldWithMargin" customModule="voziby" customModuleProvider="target">
-                                <rect key="frame" x="210" y="166" width="90" height="44"/>
+                                <rect key="frame" x="210" y="102" width="90" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="2gA-Kl-asG"/>
                                     <constraint firstAttribute="height" constant="44" id="vDR-Mi-6FW"/>
@@ -199,7 +238,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J2O-qB-bzW" userLabel="getsmsButton">
-                                <rect key="frame" x="260" y="168" width="40" height="40"/>
+                                <rect key="frame" x="260" y="104" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="28P-L7-DhJ"/>
                                     <constraint firstAttribute="width" constant="40" id="svC-Fi-xOT"/>
@@ -212,7 +251,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="82q-Pv-jUm" customClass="TextFieldWithMargin" customModule="voziby" customModuleProvider="target">
-                                <rect key="frame" x="20" y="220" width="280" height="44"/>
+                                <rect key="frame" x="20" y="156" width="280" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -242,7 +281,7 @@
                             <constraint firstItem="82q-Pv-jUm" firstAttribute="top" secondItem="R4C-6d-9gR" secondAttribute="bottom" constant="10" id="zl9-N9-Ati"/>
                         </constraints>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
@@ -256,7 +295,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YZU-cU-A2m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="-305"/>
+            <point key="canvasLocation" x="1365" y="-653"/>
         </scene>
         <!--Registraion View End-->
         <scene sceneID="IGd-qv-2X2">
@@ -270,7 +309,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Осталось ввести Ваше имя и готово!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rge-T2-gNM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Осталось ввести Ваше имя и готово!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="180" translatesAutoresizingMaskIntoConstraints="NO" id="rge-T2-gNM">
                                 <rect key="frame" x="70" y="20" width="180" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="VTQ-BS-doF"/>
@@ -313,7 +352,100 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QrQ-zw-oPM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1718" y="-305"/>
+            <point key="canvasLocation" x="1752" y="-653"/>
+        </scene>
+        <!--PassReminder View-->
+        <scene sceneID="AJj-Yv-EO7">
+            <objects>
+                <viewController storyboardIdentifier="PassReminderView" id="CNg-lW-r6M" userLabel="PassReminder View" customClass="PassReminderView" customModule="voziby" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h7O-vJ-sAO"/>
+                        <viewControllerLayoutGuide type="bottom" id="V5h-Qx-FVa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wk8-IG-wpw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите номер Вашего телефона" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="180" translatesAutoresizingMaskIntoConstraints="NO" id="QqH-Mj-J1H">
+                                <rect key="frame" x="70" y="20" width="180" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="KcQ-Uu-ONN"/>
+                                    <constraint firstAttribute="width" constant="180" id="UOQ-X6-lOR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Номер телефона" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gnc-kZ-TaU" customClass="TextFieldWithMargin" customModule="voziby" customModuleProvider="target">
+                                <rect key="frame" x="20" y="90" width="180" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="OpE-W9-aD6"/>
+                                    <constraint firstAttribute="width" constant="180" id="aV9-lw-wAE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="CNg-lW-r6M" id="aeU-gz-5EK"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="jl4-PS-6yq" userLabel="smscode" customClass="TextFieldWithMargin" customModule="voziby" customModuleProvider="target">
+                                <rect key="frame" x="210" y="90" width="90" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="A7f-VH-cJd"/>
+                                    <constraint firstAttribute="height" constant="44" id="vmP-Sf-F4A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eUo-tv-Ie3" userLabel="getsmsButton">
+                                <rect key="frame" x="260" y="92" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="eZM-23-C8F"/>
+                                    <constraint firstAttribute="height" constant="40" id="nFG-kp-1z1"/>
+                                </constraints>
+                                <state key="normal" image="getsms">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="SMSSendTouch:" destination="CNg-lW-r6M" eventType="touchUpInside" id="OUH-a9-cF7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jl4-PS-6yq" firstAttribute="leading" secondItem="gnc-kZ-TaU" secondAttribute="trailing" constant="10" id="6NW-TR-czS"/>
+                            <constraint firstItem="jl4-PS-6yq" firstAttribute="centerY" secondItem="gnc-kZ-TaU" secondAttribute="centerY" id="Lpy-yg-DkJ"/>
+                            <constraint firstItem="jl4-PS-6yq" firstAttribute="centerY" secondItem="eUo-tv-Ie3" secondAttribute="centerY" id="Vx6-Vx-9M8"/>
+                            <constraint firstItem="gnc-kZ-TaU" firstAttribute="top" secondItem="QqH-Mj-J1H" secondAttribute="bottom" constant="10" id="aYK-9Q-erv"/>
+                            <constraint firstItem="jl4-PS-6yq" firstAttribute="trailing" secondItem="eUo-tv-Ie3" secondAttribute="trailing" id="ihj-9Y-qKo"/>
+                            <constraint firstAttribute="centerX" secondItem="QqH-Mj-J1H" secondAttribute="centerX" id="oKP-q3-kVY"/>
+                            <constraint firstItem="QqH-Mj-J1H" firstAttribute="top" secondItem="h7O-vJ-sAO" secondAttribute="bottom" constant="20" id="vdz-bi-39L"/>
+                            <constraint firstAttribute="centerX" secondItem="gnc-kZ-TaU" secondAttribute="centerX" constant="50" id="w7S-Wm-MGN"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                    <connections>
+                        <outlet property="GetSMSButton" destination="eUo-tv-Ie3" id="LtC-Ej-eW9"/>
+                        <outlet property="SMSTextField" destination="jl4-PS-6yq" id="Bbg-83-fRP"/>
+                        <outlet property="phoneNumberTextField" destination="gnc-kZ-TaU" id="bZO-Wh-f0e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EGp-4w-pF3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1365" y="-24"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OLc-60-ACK">
@@ -334,7 +466,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iy0-r9-9EI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="234" y="-359"/>
+            <point key="canvasLocation" x="250" y="-305"/>
         </scene>
     </scenes>
     <resources>

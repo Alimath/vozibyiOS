@@ -12,11 +12,54 @@ class LoginView: BaseView, UITextFieldDelegate
 {
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet var leftMenu: UIView!
+
+    let menuWidth: CGFloat = 300.0
+    
+    func ShowMenu()
+    {
+        
+        var frame = self.view.frame
+        frame.origin.x -= frame.size.width
+        self.leftMenu = UIView(frame: frame)
+        self.leftMenu.backgroundColor = UIColor.redColor()
+        self.navigationController?.view.addSubview(leftMenu)
+        
+        UIView.animateWithDuration(1.0)
+        { () -> Void in
+            var frame2 = self.leftMenu.frame
+            frame2.origin.x += self.menuWidth
+            self.leftMenu.frame = frame2
+        }
+    }
+    
+    func HideMenu()
+    {
+        UIView.animateWithDuration(1.0)
+        { () -> Void in
+            var frame1 = self.view.frame
+            var frame2 = self.leftMenu.frame
+            
+            frame1.origin.x -= self.menuWidth
+            frame2.origin.x -= self.menuWidth
+            
+            self.view.frame = frame1
+            self.leftMenu.frame = frame2
+        }
+    }
+    
+    func menuFrameInit()
+    {
+        var frame = self.view.frame
+        self.leftMenu.frame = frame
+        self.leftMenu.frame.origin.x -= self.leftMenu.frame.width
+    }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         
         self.view.backgroundColor = UIColor(RGBA: "40a9f4")
         self.navigationController?.navigationBar.backgroundColor = UIColor.whiteColor()
@@ -36,7 +79,12 @@ class LoginView: BaseView, UITextFieldDelegate
             name:UITextFieldTextDidChangeNotification,
             object: nil)
         
-        Server.sharedInstance.SessionUpdate()
+        var userDefaults = NSUserDefaults.standardUserDefaults()
+        let isLogin = userDefaults.boolForKey(kVZIsLoginCompleteKey)
+        if(isLogin)
+        {
+            Server.sharedInstance.SessionUpdate()
+        }
     }
     
     override func didReceiveMemoryWarning()
@@ -142,6 +190,14 @@ class LoginView: BaseView, UITextFieldDelegate
         }
         
         return true;
+    }
+    
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent)
+    {
+        super.touchesBegan(touches, withEvent: event)
+//        phoneNumberTextField.resignFirstResponder()
+//        passwordTextField.resignFirstResponder()
+        self.ShowMenu()
     }
 }
 

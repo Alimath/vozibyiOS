@@ -51,6 +51,7 @@ class RegistraionViewEnd: BaseView, UITextFieldDelegate
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent)
     {
         super.touchesBegan(touches, withEvent: event)
+        NameTextField.resignFirstResponder()
     }
     
     func Done()
@@ -59,7 +60,7 @@ class RegistraionViewEnd: BaseView, UITextFieldDelegate
         {
             var userDefaults = NSUserDefaults.standardUserDefaults()
             userDefaults.setValue(self.NameTextField.text, forKey: kVZNameKey)
-            userDefaults.setBool(false, forKey: kVZIsRegistrationCompleteKey)
+            userDefaults.setBool(false, forKey: kVZIsLoginCompleteKey)
             userDefaults.synchronize()
             
             let name: String = userDefaults.objectForKey(kVZNameKey) as String
@@ -86,7 +87,7 @@ class RegistraionViewEnd: BaseView, UITextFieldDelegate
         NSOperationQueue.mainQueue().addOperationWithBlock
         {
             var userDefaults = NSUserDefaults.standardUserDefaults()
-            userDefaults.setBool(true, forKey: kVZIsRegistrationCompleteKey)
+            userDefaults.setBool(true, forKey: kVZIsLoginCompleteKey)
             userDefaults.synchronize()
         }
         ShowAlertView(self, "Позравляем!", "Поздравляем, вы успешно зарегестрировались. Теперь перейдите в главное окно и войдите в аккаунт, приятного использования нашего приложения", "Закрыть")
