@@ -8,19 +8,46 @@
 
 import UIKit
 
-class MenuView: UIViewController {
+class MenuView: UIViewController
+{
+    @IBOutlet weak var avatarImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
+        
+        var userInfo: UserInfo = GetUserInfo()
+        if(userInfo.logoPath != "")
+        {
+            println("change logo")
+            let logoFullPath = DocumentsPathForFileName(kVZLogoFileNameKey)
+            let logoImageData = NSData(contentsOfFile: logoFullPath)
+            let logoImage = UIImage(data: logoImageData!)
+            avatarImage.image = logoImage
+        }
+        nameLabel.text = userInfo.personName
+        
+        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        
+        var userDefaults = NSUserDefaults.standardUserDefaults()
+//        nameLabel.text = userDefaults.objectForKey(kVZNameKey) as? String
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func addAdvert(sender: AnyObject)
+    {
+        
+    }
 
     /*
     // MARK: - Navigation
@@ -31,5 +58,25 @@ class MenuView: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    func respondToSwipeGesture(gesture: UIGestureRecognizer)
+    {
+        
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer
+        {
+            switch swipeGesture.direction
+            {
+                case UISwipeGestureRecognizerDirection.Left:
+                    NSNotificationCenter.defaultCenter().postNotificationName("menuCLoseSwipe", object: nil)
+            default:
+                break
+            }
+        }
+    }
+    
+    @IBAction func avatarTouchUpInside(sender: AnyObject)
+    {
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("AvatarViewOpen", object: nil)
+    }
 }

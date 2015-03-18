@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegistraionView: BaseView, UITextFieldDelegate
+class RegistraionView: UIViewController, UITextFieldDelegate
 {
     @IBOutlet weak var CityTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
@@ -16,6 +16,7 @@ class RegistraionView: BaseView, UITextFieldDelegate
     @IBOutlet weak var GetSMSButton: UIButton!
     @IBOutlet var registrationView: UIView!
     @IBOutlet weak var PasswordTextField: UITextField!
+    @IBOutlet weak var NameTextField: TextFieldWithMargin!
     
     
     override func viewDidLoad()
@@ -34,13 +35,18 @@ class RegistraionView: BaseView, UITextFieldDelegate
         let backButton = UIBarButtonItem(title: "Отмена", style: UIBarButtonItemStyle.Plain, target: self, action: "Cancel")
         navigationItem.leftBarButtonItem = backButton
         
-        let nextButton = UIBarButtonItem(title: "Далее", style: UIBarButtonItemStyle.Plain, target: self, action: "GoNext")
+        let nextButton = UIBarButtonItem(title: "Готово", style: UIBarButtonItemStyle.Plain, target: self, action: "Done")
         navigationItem.rightBarButtonItem = nextButton
         
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldTextChanged:", name:UITextFieldTextDidChangeNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "SMSSuccesfullySend:", name:"smssend", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "SMSSendError:", name:"smssenderror", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "AddressSelected:", name:"addressselected", object: nil)
+        
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "RegisterSuccesfully:", name:"registersuccesfully", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "RegisterError:", name:"registererror", object: nil)
     }
     
     override func didReceiveMemoryWarning()
@@ -56,11 +62,16 @@ class RegistraionView: BaseView, UITextFieldDelegate
         CityTextField.resignFirstResponder()
         phoneNumberTextField.resignFirstResponder()
         PasswordTextField.resignFirstResponder()
+        NameTextField.resignFirstResponder()
     }
     
-    func GoNext()
+    func Done()
     {
-        if(self.CityTextField.text == "")
+        if(self.NameTextField.text == "")
+        {
+            ShowAlertView(self, "Ошибка", "Введите ваше имя", "Закрыть")
+        }
+        else if(self.CityTextField.text == "")
         {
             ShowAlertView(self, "Ошибка", "Поле ввода города - обязательно для заполнения", "Закрыть")
         }
@@ -78,15 +89,22 @@ class RegistraionView: BaseView, UITextFieldDelegate
         }
         else
         {
+            let name: String = self.NameTextField.text
+            let phone: String = self.phoneNumberTextField.text.StringWithoutPhoneFormat()
+            let pass: String = self.PasswordTextField.text.md5()
+            let location: String = self.CityTextField.text
+            let smscode: String = self.SMSTextField.text
+            
             var userDefaults = NSUserDefaults.standardUserDefaults()
-            userDefaults.setValue(self.CityTextField.text, forKey: kVZLocationKey)
-            userDefaults.setValue(self.phoneNumberTextField.text.StringWithoutPhoneFormat(), forKey: kVZPhoneNumberKey)
-            userDefaults.setValue(self.SMSTextField.text, forKey: kVZSMSCodeKey)
-            userDefaults.setValue(self.PasswordTextField.text.md5(), forKey: kVZPasswordKey)
+            userDefaults.setValue(location, forKey: kVZLocationKey)
+            userDefaults.setValue(phone, forKey: kVZPhoneNumberKey)
+            userDefaults.setValue(smscode, forKey: kVZSMSCodeKey)
+            userDefaults.setValue(pass, forKey: kVZPasswordKey)
+            userDefaults.setValue(name, forKey: kVZNameKey)
+            userDefaults.setBool(false, forKey: kVZIsLoginCompleteKey)
             userDefaults.synchronize()
-        
-        let RegistraionViewEnd: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("RegistraionViewEnd") as UIViewController
-            self.navigationController?.pushViewController(RegistraionViewEnd, animated: true)
+            
+            Server.sharedInstance.Register(name, location: location, username: phone, password: pass, smsCode: smscode)
         }
     }
     
@@ -97,7 +115,8 @@ class RegistraionView: BaseView, UITextFieldDelegate
     
     @IBAction func SMSSendTouch(sender: AnyObject)
     {
-        
+//        let RegistraionViewEnd: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("VZMap") as UIViewController
+//        self.navigationController?.pushViewController(RegistraionViewEnd, animated: true)
         if(!RMPhoneFormat().isPhoneNumberValid(self.phoneNumberTextField.text))
         {
             ShowAlertView(self, "Неверный номер", "Пожалуйста, введите корректный номер телефона", "Закрыть")
@@ -204,5 +223,32 @@ class RegistraionView: BaseView, UITextFieldDelegate
     func SMSSendError(notification: NSNotification)
     {
         ShowAlertView(self, "Что-то не так", "Запрос на сервер не дошел, возможно у вас не работает интернет", "Закрыть")
+    }
+    
+    func AddressSelected(notification: NSNotification)
+    {
+        println(notification)
+        var userDefaults = NSUserDefaults.standardUserDefaults()
+        var address: String = userDefaults.objectForKey(kVZTempLocationKey) as String
+        self.CityTextField.text = address
+    }
+    
+    func RegisterSuccesfully(notification: NSNotification)
+    {
+        NSOperationQueue.mainQueue().addOperationWithBlock
+        {
+            var userDefaults = NSUserDefaults.standardUserDefaults()
+            userDefaults.setBool(true, forKey: kVZIsLoginCompleteKey)
+            userDefaults.synchronize()
+                        
+            let mainView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainView") as UIViewController
+            self.navigationController?.presentViewController(mainView, animated: true, completion: nil)
+        }
+//        ShowAlertView(self, "Позравляем!", "Поздравляем, вы успешно зарегестрировались. Теперь перейдите в главное окно и войдите в аккаунт, приятного использования нашего приложения", "Закрыть")
+    }
+    
+    func RegisterError(notification: NSNotification)
+    {
+        ShowAlertView(self, "Упс!", "Что-то пошло не так, возможно вы неверно указали код из смс сообщения, можете вернуться на предыдущий экран и проверить это", "Закрыть")
     }
 }

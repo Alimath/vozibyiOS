@@ -8,58 +8,15 @@
 
 import UIKit
 
-class LoginView: BaseView, UITextFieldDelegate
+class LoginView: UIViewController, UITextFieldDelegate
 {
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet var leftMenu: UIView!
-
-    let menuWidth: CGFloat = 300.0
-    
-    func ShowMenu()
-    {
-        
-        var frame = self.view.frame
-        frame.origin.x -= frame.size.width
-        self.leftMenu = UIView(frame: frame)
-        self.leftMenu.backgroundColor = UIColor.redColor()
-        self.navigationController?.view.addSubview(leftMenu)
-        
-        UIView.animateWithDuration(1.0)
-        { () -> Void in
-            var frame2 = self.leftMenu.frame
-            frame2.origin.x += self.menuWidth
-            self.leftMenu.frame = frame2
-        }
-    }
-    
-    func HideMenu()
-    {
-        UIView.animateWithDuration(1.0)
-        { () -> Void in
-            var frame1 = self.view.frame
-            var frame2 = self.leftMenu.frame
-            
-            frame1.origin.x -= self.menuWidth
-            frame2.origin.x -= self.menuWidth
-            
-            self.view.frame = frame1
-            self.leftMenu.frame = frame2
-        }
-    }
-    
-    func menuFrameInit()
-    {
-        var frame = self.view.frame
-        self.leftMenu.frame = frame
-        self.leftMenu.frame.origin.x -= self.leftMenu.frame.width
-    }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
         
         self.view.backgroundColor = UIColor(RGBA: "40a9f4")
         self.navigationController?.navigationBar.backgroundColor = UIColor.whiteColor()
@@ -79,12 +36,24 @@ class LoginView: BaseView, UITextFieldDelegate
             name:UITextFieldTextDidChangeNotification,
             object: nil)
         
+        notificationCenter.addObserver(
+            self,
+            selector: "loginComplete:",
+            name:kVZLoginCompleteKey,
+            object: nil)
+        
         var userDefaults = NSUserDefaults.standardUserDefaults()
         let isLogin = userDefaults.boolForKey(kVZIsLoginCompleteKey)
+        
         if(isLogin)
         {
             Server.sharedInstance.SessionUpdate()
         }
+    
+        self.phoneNumberTextField.becomeFirstResponder()
+//        SwiftSpinner.show("Идет загрузка", animated: true)
+//        var userInfo = UserInfo(userName: "a", personName: "a", location: "a", email: "A", notifyByEmail: true, phoneNumber: "A", notifyByPhone: true, logo: true)
+//        userInfo.loadUserInfo()
     }
     
     override func didReceiveMemoryWarning()
@@ -93,20 +62,30 @@ class LoginView: BaseView, UITextFieldDelegate
         // Dispose of any resources that can be recreated.
     }
     
+    func loginComplete(sender: AnyObject)
+    {
+        NSOperationQueue.mainQueue().addOperationWithBlock
+        {
+            self.phoneNumberTextField.resignFirstResponder()
+            self.passwordTextField.resignFirstResponder()
+            
+            let mainView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainView") as UIViewController
+            self.navigationController?.presentViewController(mainView, animated: true, completion: nil)
+        }
+    }
+    
     func textFieldTextChanged(sender : AnyObject)
     {
         var textField: UITextField = sender.object as UITextField
-        var tempText = textField.text
         if(textField.tag == 1001)
         {
+            var tempText = textField.text
+            
             var phoneFormat: RMPhoneFormat = RMPhoneFormat()
             phoneNumberTextField.text = phoneFormat.format(phoneNumberTextField.text)
             
             if(tempText+")" == textField.text)
             {
-                let stringLength = textField.text.length()
-                
-
                 var substringIndex: Int = 1
                 if(textField.text.hasSuffix(")"))
                 {
@@ -181,6 +160,7 @@ class LoginView: BaseView, UITextFieldDelegate
         {
             if(phoneFormat.isPhoneNumberValid(phoneNumberTextField.text))
             {
+                println(phoneNumberTextField.text.StringWithoutPhoneFormat())
                 Server.sharedInstance.Authorization(phoneNumberTextField.text.StringWithoutPhoneFormat(), password: self.passwordTextField.text.md5())
             }
             else
@@ -195,9 +175,8 @@ class LoginView: BaseView, UITextFieldDelegate
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent)
     {
         super.touchesBegan(touches, withEvent: event)
-//        phoneNumberTextField.resignFirstResponder()
-//        passwordTextField.resignFirstResponder()
-        self.ShowMenu()
+        phoneNumberTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
     }
 }
 

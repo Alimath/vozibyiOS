@@ -8,8 +8,8 @@
 
 import UIKit
 
-class TextFieldWithMargin: UITextField {
-    
+class TextFieldWithMargin: UITextField
+{    
     let padding = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 5);
     
     override func textRectForBounds(bounds: CGRect) -> CGRect {

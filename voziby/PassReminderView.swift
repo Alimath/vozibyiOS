@@ -144,17 +144,36 @@ class PassReminderView: UIViewController, UITextFieldDelegate
 
     func SMSSuccesfullySend(notification: NSNotification)
     {
+        self.SMSTextField.backgroundColor = UIColor.whiteColor()
+        self.SMSTextField.placeholder = "SMS код"
+        self.SMSTextField.userInteractionEnabled = true
+        self.SMSTextField.alpha = 0
+        
         NSOperationQueue.mainQueue().addOperationWithBlock
             {
-                UIView.animateWithDuration(1)
-                    { () -> Void in
-                        self.GetSMSButton.alpha = 0
-                        self.SMSTextField.backgroundColor = UIColor.whiteColor()
-                        self.SMSTextField.placeholder = "SMS код"
-                        self.SMSTextField.userInteractionEnabled = true
-                }
+                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                    
+                    self.GetSMSButton.alpha = 0
+                }, completion: { (complete) -> Void in
+                    if(complete)
+                    {
+                        NSOperationQueue.mainQueue().addOperationWithBlock
+                            {
+                                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                                    self.SMSTextField.alpha = 1
+                                    self.SMSTextField.placeholder = "SMS код"
+                                }, completion: { (complete) -> Void in
+                                    if(complete)
+                                    {
+                                        self.SMSTextField.becomeFirstResponder()
+                                    }
+                                })
+                        }
+                    }
+                })
+                
         }
-        ShowAlertView(self, "СМС с кодом", "Вам направлено смс с кодом, который необходимо ввести для продолжения регистрации", "Закрыть")
+//        ShowAlertView(self, "СМС с кодом", "Вам направлено смс с кодом, который необходимо ввести для продолжения регистрации", "Закрыть")
     }
     
     func SMSSendError(notification: NSNotification)

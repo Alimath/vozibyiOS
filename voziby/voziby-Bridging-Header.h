@@ -11,5 +11,8 @@
 
 #import <CommonCrypto/CommonCrypto.h>
 #import "RMPhoneFormat.h"
+#import "SWRevealViewController.h"
+#import "FXBlurView.h"
+#import "GoogleMaps/GoogleMaps.h"
 
 #endif

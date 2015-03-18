@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegistraionViewEnd: BaseView, UITextFieldDelegate
+class RegistraionViewEnd: UIViewController, UITextFieldDelegate
 {
     @IBOutlet weak var NameTextField: UITextField!
     
