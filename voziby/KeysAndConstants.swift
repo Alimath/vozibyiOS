@@ -24,5 +24,6 @@ let kVZNotifyByPhoneKey = "notifybyphone"
 let kVZLogoPath = "logopath"
 
 let kVZLoginCompleteKey = "logincomplete"
+let kVZOrderImageLoaded = "orderimageloaded"
 
 let kVZLogoFileNameKey = "imageLogo.png"

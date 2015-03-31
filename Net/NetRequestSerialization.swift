@@ -51,6 +51,13 @@ class RequestSerialization
                     paramsData = NetHelper.dataFromParamsWithBoundary(params!, boundary: boundary)
                     contentType = "multipart/form-data; boundary=\(boundary)"
                 }
+                else if(VZisMultiPart)
+                {
+                    println("avatar loading")
+                    let boundary = "NET-POST-boundary-\(arc4random())-\(arc4random())"
+                    paramsData = NetHelper.dataFromParamsWithBoundary(params!, boundary: boundary)
+                    contentType = "multipart/form-data; boundary=\(boundary)"
+                }
                 else {
                     // UTF8 url-encoded body for simple params
                     paramsData = NetHelper.dataFromParams(params!)

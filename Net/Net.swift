@@ -307,6 +307,9 @@ class Net : NSObject, NSURLSessionDataDelegate, NSURLSessionDownloadDelegate, NS
         
         let request = requestSerializer.requestWithMethod(method, urlString: urlString, params: params, error: nil)
         let task = createSessionTaskWithRequest(request, successHandler: successHandler, failureHandler: failureHandler)
+        
+        var prop: AnyObject? = NSURLProtocol.propertyForKey("upload", inRequest: request)
+        
         task.resume()
         
         return task

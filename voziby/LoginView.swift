@@ -13,6 +13,23 @@ class LoginView: UIViewController, UITextFieldDelegate
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    override func viewDidAppear(animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        var userDefaults = NSUserDefaults.standardUserDefaults()
+        let isLogin = userDefaults.boolForKey(kVZIsLoginCompleteKey)
+        
+        if(isLogin)
+        {
+            Server.sharedInstance.SessionUpdate()
+            self.phoneNumberTextField.resignFirstResponder()
+        }
+        else
+        {
+            self.phoneNumberTextField.becomeFirstResponder()
+        }
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -42,15 +59,12 @@ class LoginView: UIViewController, UITextFieldDelegate
             name:kVZLoginCompleteKey,
             object: nil)
         
-        var userDefaults = NSUserDefaults.standardUserDefaults()
-        let isLogin = userDefaults.boolForKey(kVZIsLoginCompleteKey)
-        
-        if(isLogin)
-        {
-            Server.sharedInstance.SessionUpdate()
-        }
+        notificationCenter.addObserver(
+            self,
+            selector: "loginComplete:",
+            name:"registersuccesfully",
+            object: nil)
     
-        self.phoneNumberTextField.becomeFirstResponder()
 //        SwiftSpinner.show("Идет загрузка", animated: true)
 //        var userInfo = UserInfo(userName: "a", personName: "a", location: "a", email: "A", notifyByEmail: true, phoneNumber: "A", notifyByPhone: true, logo: true)
 //        userInfo.loadUserInfo()
@@ -68,7 +82,7 @@ class LoginView: UIViewController, UITextFieldDelegate
         {
             self.phoneNumberTextField.resignFirstResponder()
             self.passwordTextField.resignFirstResponder()
-            
+//            let mainView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainView") as UIViewController
             let mainView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainView") as UIViewController
             self.navigationController?.presentViewController(mainView, animated: true, completion: nil)
         }

@@ -52,7 +52,6 @@ class NetHelper
     class func queryStringFromParams(params: NSDictionary) -> String {
         let paramsArray = self.convertParamsToArray(params)
         var queryString = join("&", paramsArray.map{"\($0)=\($1)"})
-        
         return queryString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
     }
     

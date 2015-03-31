@@ -7,28 +7,55 @@
 //
 
 import UIKit
+import AssetsLibrary
 
-class AvatarPickerViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate
+class AvatarPickerViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate
 {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var imageSizeToggleButton: UIButton!
 
     @IBOutlet weak var imageConstraintTop: NSLayoutConstraint!
     @IBOutlet weak var imageConstraintRight: NSLayoutConstraint!
     @IBOutlet weak var imageConstraintLeft: NSLayoutConstraint!
     @IBOutlet weak var imageConstraintBottom: NSLayoutConstraint!
     @IBOutlet weak var DoneButton: UIBarButtonItem!
+    @IBOutlet weak var ScrollViewHeightConstraint: NSLayoutConstraint!
 
+    @IBOutlet weak var imagesPickerView: UIView!
+    @IBOutlet weak var imagesPickHeightConstraint: NSLayoutConstraint!
     let picker = UIImagePickerController()
     var lastZoomScale: CGFloat = -1
-
+    var images : [UIImage] = []
+    var assetsURLs: [NSURL] = []
+    @IBOutlet weak var imagePickerActivityIndicator: UIActivityIndicatorView!
+    var pointStartScrolling: CGFloat = 0
+    var isShowingBigPhotoPicker: Bool = false
+    @IBOutlet weak var imagesScrollView: UIScrollView!
+    var lastSelectedImage: UIButton!
+    
+//    var fullImages : [UIImage] = []
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
+        self.imagePickerActivityIndicator.startAnimating()
+        println(self.imagePickerActivityIndicator.frame)
+        
+        var userInfo: UserInfo = GetUserInfo()
+        if(userInfo.logoPath != "")
+        {
+            let logoFullPath = DocumentsPathForFileName(kVZLogoFileNameKey)
+            let logoImageData = NSData(contentsOfFile: logoFullPath)
+            let logoImage = UIImage(data: logoImageData!)
+            self.imageView.image = logoImage
+        }
+        
+        self.updateConstraints()
+        
         self.view.backgroundColor = UIColor(RGBA: "f5f5f5")
+        self.navigationController?.navigationBarHidden = false
         self.navigationController?.navigationBar.backgroundColor = UIColor.whiteColor()
         if let font = UIFont(name: "HelveticaNeue-Bold", size: 25)
         {
@@ -36,19 +63,30 @@ class AvatarPickerViewController: UIViewController, UIScrollViewDelegate, UIImag
         }
         self.navigationItem.title = "vozim.by"
         
-        let backButton = UIBarButtonItem(title: "Отмена", style: UIBarButtonItemStyle.Plain, target: self, action: "Cancel")
+        let backButton = UIBarButtonItem(title: "Назад", style: UIBarButtonItemStyle.Plain, target: self, action: "Cancel")
         navigationItem.leftBarButtonItem = backButton
         
         DoneButton.target = self
-        DoneButton.action = "SaveImageToServer:"
+        DoneButton.action = "MakeShot:"
         
         picker.delegate = self
+    
+        getLatestPhotos(completion: { images in
+            //Set Images in this block.
+        })
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "SetPhotos:", name: "PhotosLoaded", object: nil)
+    }
+    
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
+        self.ScrollViewHeightConstraint.constant = self.view.frame.width
     }
     
     
     override func viewDidAppear(animated: Bool)
     {
-    super.viewDidAppear(animated)
+        super.viewDidAppear(animated)
 
 //    imageView.image = UIImage(named: imageScrollLargeImageName)
         scrollView.delegate = self
@@ -60,11 +98,18 @@ class AvatarPickerViewController: UIViewController, UIScrollViewDelegate, UIImag
     // is called from within an animation block
     //
     // DEPRECATION NOTICE: This method is said to be deprecated in iOS 8.0. But it still works.
-    override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval)
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator)
     {
-        super.willAnimateRotationToInterfaceOrientation(toInterfaceOrientation, duration: duration)
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         updateZoom()
     }
+    
+//    override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval)
+//    {
+//        super.willAnimateRotationToInterfaceOrientation(toInterfaceOrientation, duration: duration)
+//        updateZoom()
+//    }
 
     func updateConstraints()
     {
@@ -127,13 +172,6 @@ class AvatarPickerViewController: UIViewController, UIScrollViewDelegate, UIImag
         }
     }
     
-    @IBAction func OpenLibrary(sender: AnyObject)
-    {
-        picker.allowsEditing = false
-        picker.sourceType = .PhotoLibrary
-        presentViewController(picker, animated: true, completion: nil)
-    }
-    
     @IBAction func MakeShot(sender: AnyObject)
     {
         picker.allowsEditing = false
@@ -181,24 +219,6 @@ class AvatarPickerViewController: UIViewController, UIScrollViewDelegate, UIImag
         Server.sharedInstance.SetAvatar(self.MakeAvatarScreen(self.scrollView))
     }
     
-//    private func MakeAvatarScreen() -> UIImage
-//    {
-//        var windowLayer = self.scrollView.layer
-//        println("\(self.scrollView.frame)")
-//        UIGraphicsBeginImageContextWithOptions(self.scrollView.frame.size, false, 1.0)
-//        windowLayer.renderInContext(UIGraphicsGetCurrentContext())
-//        var screenImage = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext();
-//        
-//        let relativePath = "hallo.png"
-//        let path = DocumentsPathForFileName(relativePath)
-//        UIImagePNGRepresentation(screenImage).writeToFile(path, atomically: true)
-//        
-//        println(path)
-//        
-//        return screenImage;
-//    }
-    
     private func MakeAvatarScreen(background: UIView) -> UIImage
     {
         var image: UIImage
@@ -211,21 +231,185 @@ class AvatarPickerViewController: UIViewController, UIScrollViewDelegate, UIImag
         var imgRef: CGImageRef = CGImageCreateWithImageInRect(image.CGImage, background.frame)
         image = UIImage(CGImage: imgRef)!
 
-        let relativePath = "hallo.png"
+        let relativePath = kVZLogoFileNameKey
         let path = DocumentsPathForFileName(relativePath)
         UIImagePNGRepresentation(image).writeToFile(path, atomically: true)
-        println(path)
         
         return image
     }
+    
+    func GetPhotoCount()
+    {
+        
+    }
+    
+    func getLatestPhotos(completion completionBlock : ([UIImage] -> ()))
+    {
+        let library = ALAssetsLibrary()
+        var count = 0
+        var stopped = false
+        
+        library.enumerateGroupsWithTypes(ALAssetsGroupSavedPhotos, usingBlock: { (group,var stop) -> Void in
+            
+            if group == nil
+            {
+                return
+            }
+            
+            group?.setAssetsFilter(ALAssetsFilter.allPhotos())
+            var countPh: Int = (group?.numberOfAssets())!
+            
+            group?.valueForProperty(ALAssetsGroupPropertyName)
+
+            group?.enumerateAssetsWithOptions(NSEnumerationOptions.Reverse, usingBlock: {
+                (asset : ALAsset!, index, var stopEnumeration) -> Void in
+                if (!stopped)
+                {
+                    if count >= countPh
+                    {
+                        
+                        stopEnumeration.memory = ObjCBool(true)
+                        stop.memory = ObjCBool(true)
+                        completionBlock(self.images)
+                        stopped = true
+                        NSNotificationCenter.defaultCenter().postNotificationName("PhotosLoaded", object: nil)
+                    }
+                    else
+                    {
+                        var assetURL = asset.valueForProperty(ALAssetPropertyAssetURL) as NSURL
+                        
+                        self.assetsURLs.append(assetURL)
+                        // For just the thumbnails use the following line.
+                        let cgImage = asset.thumbnail().takeUnretainedValue()
+//                        self.imagesAssets.append(asset.defaultRepresentation())
+                        // Use the following line for the full image.
+                        
+                        if let image = UIImage(CGImage: cgImage)
+                        {
+                            self.images.append(image)
+                            count += 1
+                        }
+                    }
+                }
+                
+            })
+                
+            
+            },failureBlock : { error in
+                println(error)
+        })
+    }
+    
+    func SetPhotos(notification: NSNotification)
+    {
+        NSOperationQueue.mainQueue().addOperationWithBlock
+        {
+            var i: Int = 0
+            var j: Int = 0
+            
+            var contentWidth = self.imagesPickerView.frame.width
+            var oneImageSize = self.imagesPickerView.frame.width / CGFloat(4)
+            
+            
+            for image in self.images
+            {
+                var thumbImageView = UIImageView(image: image)
+                thumbImageView.frame = CGRectMake(oneImageSize * CGFloat(i) + 1, oneImageSize * CGFloat(j) + 1, oneImageSize - 2, oneImageSize - 2)
+                
+                var imagePickBtn = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+                imagePickBtn.frame = CGRectMake(oneImageSize * CGFloat(i) + 1, oneImageSize * CGFloat(j) + 1, oneImageSize - 2, oneImageSize - 2)
+                imagePickBtn.backgroundColor = UIColor.clearColor()
+                imagePickBtn.addTarget(self, action: "ClickEventOnImage:", forControlEvents: UIControlEvents.TouchUpInside)
+                imagePickBtn.tag = i + 4*j
+            
+                self.imagesPickerView.addSubview(thumbImageView)
+                self.imagesPickerView.addSubview(imagePickBtn)
+                
+                thumbImageView.userInteractionEnabled = true
+                i += 1
+                if(i == 4)
+                {
+                    i = 0
+                    j += 1
+                }
+            }
+            
+            self.imagesPickHeightConstraint.constant = max(oneImageSize + oneImageSize * CGFloat(j) + 1, self.imagesScrollView.frame.height)
+            self.imagePickerActivityIndicator.stopAnimating()
+        }
+        
+        
+    }
+    
+    @IBAction func ClickEventOnImage(sender: AnyObject)
+    {
+        NSOperationQueue.mainQueue().addOperationWithBlock
+        {
+            var aas = ALAsset()
+            
+            var assetLib = ALAssetsLibrary()
+            assetLib.assetForURL(self.assetsURLs[sender.tag], resultBlock: { (asset) -> Void in
+                self.imageView.image = UIImage(CGImage: asset.defaultRepresentation().fullScreenImage().takeUnretainedValue())
+                self.updateConstraints()
+                self.updateZoom()
+            }, failureBlock: { (error) -> Void in
+                println("error read image")
+            })
+            self.lastSelectedImage = sender.object as UIButton
+            self.ShowHideBigPhotoPicker(false)
+//            self.imageView.image = self.fullImages[sender.tag]
+        }
+    }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView)
+    {
+        if(scrollView.tag == 101)
+        {
+            pointStartScrolling = scrollView.contentOffset.y
+        }
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if(scrollView.tag == 101)
+        {
+            if(scrollView.contentOffset.y > pointStartScrolling)
+            {
+                self.ShowHideBigPhotoPicker(true)
+            }
+        }
+    }
+    
+    func ShowHideBigPhotoPicker(show: Bool)
+    {
+        if(show && self.ScrollViewHeightConstraint.constant > 150)
+        {
+            self.isShowingBigPhotoPicker = true
+            self.ScrollViewHeightConstraint.constant = 100
+            self.imagesPickHeightConstraint.constant = max(self.imagesPickHeightConstraint.constant, self.view.frame.height - 100)
+            
+            UIView.animateWithDuration(0.4, animations: { () -> Void in
+                self.view.layoutIfNeeded()
+            })
+        }
+        else if (!show)
+        {
+            self.isShowingBigPhotoPicker = false
+            self.ScrollViewHeightConstraint.constant = self.view.frame.width
+            self.imagesPickHeightConstraint.constant = max(self.imagesPickHeightConstraint.constant, self.imagesScrollView.frame.height)
+            
+            UIView.animateWithDuration(0.4, animations: { () -> Void in
+                self.view.layoutIfNeeded()
+            })
+        }
+        
+        if(self.isShowingBigPhotoPicker)
+        {
+            self.DoneButton.enabled = false
+        }
+        else
+        {
+            self.DoneButton.enabled = true
+        }
+        
+    }
 }
-
-
-
-
-
-
-
-
-
-

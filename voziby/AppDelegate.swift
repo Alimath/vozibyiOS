@@ -12,11 +12,12 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let googleMapsApiKey = "AIzaSyDg9YfSGgrvzzgt2FV8DxR3nZKAUo8ZJxE"
+    let googleMapsApiKey = "AIzaSyAIw0Ul4TYSlX-AKdtyj3ixdoT8IKQuiKA"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         GMSServices.provideAPIKey(googleMapsApiKey)
+        NSUserDefaults.standardUserDefaults().synchronize()
         return true
     }
 

@@ -10,6 +10,9 @@
 		A00DFD481AA29187007DFBF8 /* stringsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00DFD471AA29187007DFBF8 /* stringsExtensions.swift */; };
 		A00DFD4B1AA2981A007DFBF8 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00DFD4A1AA2981A007DFBF8 /* ColorExtensions.swift */; };
 		A00DFD4F1AA2987F007DFBF8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00DFD4E1AA2987F007DFBF8 /* LoginView.swift */; };
+		A00F4EC31ABADB930054EF6F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00F4EC21ABADB930054EF6F /* SettingsView.swift */; };
+		A01734EF1AC9F390000DA388 /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01734EE1AC9F390000DA388 /* GoogleDataProvider.swift */; };
+		A01734F11AC9F39C000DA388 /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01734F01AC9F39C000DA388 /* GooglePlace.swift */; };
 		A033BDBA1AA3E3A200BB7E9E /* PassReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A033BDB91AA3E3A200BB7E9E /* PassReminderView.swift */; };
 		A054E2B21AA89E94009F021E /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A054E2B11AA89E94009F021E /* SwiftSpinner.swift */; };
 		A054E2B41AA8ABE3009F021E /* SpinnerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = A054E2B31AA8ABE3009F021E /* SpinnerStub.swift */; };
@@ -29,7 +32,6 @@
 		A054E2D31AAA0537009F021E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A054E2D21AAA0537009F021E /* OpenGLES.framework */; };
 		A054E2D51AAA0541009F021E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A054E2D41AAA0541009F021E /* SystemConfiguration.framework */; };
 		A054E2DA1AAA5668009F021E /* VZMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A054E2D91AAA5668009F021E /* VZMapViewController.swift */; };
-		A05C29791AB7CB69007CFC22 /* objectInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05C29781AB7CB69007CFC22 /* objectInfo.swift */; };
 		A05C297F1AB7F031007CFC22 /* AvatarPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05C297E1AB7F031007CFC22 /* AvatarPickerViewController.swift */; };
 		A08E72611AA2AB79008CB6A4 /* TextFieldWithMargin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08E72601AA2AB79008CB6A4 /* TextFieldWithMargin.swift */; };
 		A08E72771AA2B5B8008CB6A4 /* RMPhoneFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = A08E72761AA2B5B8008CB6A4 /* RMPhoneFormat.m */; };
@@ -46,6 +48,9 @@
 		A08E72921AA2D12F008CB6A4 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08E72911AA2D12F008CB6A4 /* AlertView.swift */; };
 		A08E72941AA2D4C1008CB6A4 /* RegistraionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08E72931AA2D4C1008CB6A4 /* RegistraionView.swift */; };
 		A08E72A01AA2F994008CB6A4 /* RegistrationViewEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08E729F1AA2F994008CB6A4 /* RegistrationViewEnd.swift */; };
+		A09F15C41AC43B3400CE2074 /* OrderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09F15C31AC43B3400CE2074 /* OrderInfo.swift */; };
+		A09F15C61AC4479400CE2074 /* OffersInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09F15C51AC4479400CE2074 /* OffersInfo.swift */; };
+		A09F15C81AC504DE00CE2074 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09F15C71AC504DE00CE2074 /* OrderView.swift */; };
 		A0B6CCDB1AA422BA000DF352 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B6CCDA1AA422BA000DF352 /* QuartzCore.framework */; };
 		A0B6CCE71AA4490A000DF352 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B6CCE61AA4490A000DF352 /* MenuView.swift */; };
 		A0B6CCEA1AA4496E000DF352 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B6CCE91AA4496E000DF352 /* SWRevealViewController.m */; };
@@ -64,6 +69,9 @@
 		A00DFD491AA291CE007DFBF8 /* voziby-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "voziby-Bridging-Header.h"; sourceTree = "<group>"; };
 		A00DFD4A1AA2981A007DFBF8 /* ColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		A00DFD4E1AA2987F007DFBF8 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A00F4EC21ABADB930054EF6F /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A01734EE1AC9F390000DA388 /* GoogleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDataProvider.swift; sourceTree = "<group>"; };
+		A01734F01AC9F39C000DA388 /* GooglePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlace.swift; sourceTree = "<group>"; };
 		A033BDB91AA3E3A200BB7E9E /* PassReminderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassReminderView.swift; sourceTree = "<group>"; };
 		A054E2B11AA89E94009F021E /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
 		A054E2B31AA8ABE3009F021E /* SpinnerStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerStub.swift; sourceTree = "<group>"; };
@@ -84,7 +92,6 @@
 		A054E2D21AAA0537009F021E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A054E2D41AAA0541009F021E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A054E2D91AAA5668009F021E /* VZMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VZMapViewController.swift; sourceTree = "<group>"; };
-		A05C29781AB7CB69007CFC22 /* objectInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = objectInfo.swift; sourceTree = "<group>"; };
 		A05C297C1AB7E76B007CFC22 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		A05C297D1AB7E76B007CFC22 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		A05C297E1AB7F031007CFC22 /* AvatarPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvatarPickerViewController.swift; path = ../AvatarPickerViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +111,9 @@
 		A08E72911AA2D12F008CB6A4 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		A08E72931AA2D4C1008CB6A4 /* RegistraionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistraionView.swift; sourceTree = "<group>"; };
 		A08E729F1AA2F994008CB6A4 /* RegistrationViewEnd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewEnd.swift; sourceTree = "<group>"; };
+		A09F15C31AC43B3400CE2074 /* OrderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfo.swift; sourceTree = "<group>"; };
+		A09F15C51AC4479400CE2074 /* OffersInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersInfo.swift; sourceTree = "<group>"; };
+		A09F15C71AC504DE00CE2074 /* OrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		A0B6CCDA1AA422BA000DF352 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A0B6CCE61AA4490A000DF352 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		A0B6CCE81AA4496E000DF352 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -168,6 +178,13 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		A01734F21ACA8957000DA388 /* CompaniesAndAutosSearch */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CompaniesAndAutosSearch;
+			sourceTree = "<group>";
+		};
 		A054E2B51AA8ED64009F021E /* FXBlurView */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +207,8 @@
 			isa = PBXGroup;
 			children = (
 				A054E2D91AAA5668009F021E /* VZMapViewController.swift */,
+				A01734F01AC9F39C000DA388 /* GooglePlace.swift */,
+				A01734EE1AC9F390000DA388 /* GoogleDataProvider.swift */,
 			);
 			name = maps;
 			sourceTree = "<group>";
@@ -255,11 +274,14 @@
 		A0E55F0E1AA27B4B000A4F03 /* voziby */ = {
 			isa = PBXGroup;
 			children = (
+				A01734F21ACA8957000DA388 /* CompaniesAndAutosSearch */,
 				A054E2D61AAA561D009F021E /* maps */,
 				A00DFD4C1AA2981F007DFBF8 /* Extensions */,
 				A00DFD4D1AA2986B007DFBF8 /* Login */,
 				A0E55F451AA27FB0000A4F03 /* Server and Entities */,
 				A0E55F131AA27B4B000A4F03 /* BaseView.swift */,
+				A09F15C71AC504DE00CE2074 /* OrderView.swift */,
+				A00F4EC21ABADB930054EF6F /* SettingsView.swift */,
 				A0B6CCE61AA4490A000DF352 /* MenuView.swift */,
 				A05C297E1AB7F031007CFC22 /* AvatarPickerViewController.swift */,
 				A0E55F151AA27B4B000A4F03 /* Main.storyboard */,
@@ -314,7 +336,8 @@
 			children = (
 				A0E55F431AA27BE8000A4F03 /* Server.swift */,
 				A0B6CCEC1AA4E90D000DF352 /* UserInfo.swift */,
-				A05C29781AB7CB69007CFC22 /* objectInfo.swift */,
+				A09F15C31AC43B3400CE2074 /* OrderInfo.swift */,
+				A09F15C51AC4479400CE2074 /* OffersInfo.swift */,
 			);
 			name = "Server and Entities";
 			sourceTree = "<group>";
@@ -394,8 +417,9 @@
 				A0B6CCE71AA4490A000DF352 /* MenuView.swift in Sources */,
 				A08E72891AA2B829008CB6A4 /* NetResponseData.swift in Sources */,
 				A08E72881AA2B829008CB6A4 /* NetRequestSerialization.swift in Sources */,
+				A09F15C81AC504DE00CE2074 /* OrderView.swift in Sources */,
 				A0B6CCED1AA4E90D000DF352 /* UserInfo.swift in Sources */,
-				A05C29791AB7CB69007CFC22 /* objectInfo.swift in Sources */,
+				A09F15C41AC43B3400CE2074 /* OrderInfo.swift in Sources */,
 				A00DFD4F1AA2987F007DFBF8 /* LoginView.swift in Sources */,
 				A08E72901AA2CD42008CB6A4 /* SystemVersion.swift in Sources */,
 				A08E72841AA2B829008CB6A4 /* Net.swift in Sources */,
@@ -405,6 +429,8 @@
 				A0E55F141AA27B4B000A4F03 /* BaseView.swift in Sources */,
 				A0E55F121AA27B4B000A4F03 /* AppDelegate.swift in Sources */,
 				A05C297F1AB7F031007CFC22 /* AvatarPickerViewController.swift in Sources */,
+				A01734EF1AC9F390000DA388 /* GoogleDataProvider.swift in Sources */,
+				A09F15C61AC4479400CE2074 /* OffersInfo.swift in Sources */,
 				A08E72941AA2D4C1008CB6A4 /* RegistraionView.swift in Sources */,
 				A0B6CCEA1AA4496E000DF352 /* SWRevealViewController.m in Sources */,
 				A0E55F441AA27BE8000A4F03 /* Server.swift in Sources */,
@@ -414,8 +440,10 @@
 				A08E72611AA2AB79008CB6A4 /* TextFieldWithMargin.swift in Sources */,
 				A054E2DA1AAA5668009F021E /* VZMapViewController.swift in Sources */,
 				A08E72851AA2B829008CB6A4 /* NetData.swift in Sources */,
+				A01734F11AC9F39C000DA388 /* GooglePlace.swift in Sources */,
 				A054E2B21AA89E94009F021E /* SwiftSpinner.swift in Sources */,
 				A08E72831AA2B829008CB6A4 /* GCD.swift in Sources */,
+				A00F4EC31ABADB930054EF6F /* SettingsView.swift in Sources */,
 				A054E2B41AA8ABE3009F021E /* SpinnerStub.swift in Sources */,
 				A033BDBA1AA3E3A200BB7E9E /* PassReminderView.swift in Sources */,
 				A08E72A01AA2F994008CB6A4 /* RegistrationViewEnd.swift in Sources */,
@@ -550,6 +578,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
@@ -571,6 +600,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;

@@ -25,3 +25,5 @@ func DocumentsPathForFileName(name: String) -> String {
     
     return fullPath
 }
+
+var VZisMultiPart: Bool = false

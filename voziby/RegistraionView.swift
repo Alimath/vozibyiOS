@@ -15,7 +15,6 @@ class RegistraionView: UIViewController, UITextFieldDelegate
     @IBOutlet weak var SMSTextField: UITextField!
     @IBOutlet weak var GetSMSButton: UIButton!
     @IBOutlet var registrationView: UIView!
-    @IBOutlet weak var PasswordTextField: UITextField!
     @IBOutlet weak var NameTextField: TextFieldWithMargin!
     
     
@@ -61,7 +60,6 @@ class RegistraionView: UIViewController, UITextFieldDelegate
         SMSTextField.resignFirstResponder()
         CityTextField.resignFirstResponder()
         phoneNumberTextField.resignFirstResponder()
-        PasswordTextField.resignFirstResponder()
         NameTextField.resignFirstResponder()
     }
     
@@ -83,15 +81,11 @@ class RegistraionView: UIViewController, UITextFieldDelegate
         {
             ShowAlertView(self, "Ошибка", "Введите код, полученный по смс", "Закрыть")
         }
-        else if(self.PasswordTextField.text == "")
-        {
-            ShowAlertView(self, "Ошибка", "Поле ввода пароля - обязательно для заполнения", "Закрыть")
-        }
         else
         {
             let name: String = self.NameTextField.text
             let phone: String = self.phoneNumberTextField.text.StringWithoutPhoneFormat()
-            let pass: String = self.PasswordTextField.text.md5()
+            let pass: String = self.SMSTextField.text.md5()
             let location: String = self.CityTextField.text
             let smscode: String = self.SMSTextField.text
             
@@ -117,12 +111,18 @@ class RegistraionView: UIViewController, UITextFieldDelegate
     {
 //        let RegistraionViewEnd: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("VZMap") as UIViewController
 //        self.navigationController?.pushViewController(RegistraionViewEnd, animated: true)
+        
+        
         if(!RMPhoneFormat().isPhoneNumberValid(self.phoneNumberTextField.text))
         {
             ShowAlertView(self, "Неверный номер", "Пожалуйста, введите корректный номер телефона", "Закрыть")
         }
         else
         {
+            SMSTextField.resignFirstResponder()
+            CityTextField.resignFirstResponder()
+            phoneNumberTextField.resignFirstResponder()
+            NameTextField.resignFirstResponder()
             Server.sharedInstance.SendSMS(self.phoneNumberTextField.text.StringWithoutPhoneFormat())
         }
     }
@@ -215,9 +215,10 @@ class RegistraionView: UIViewController, UITextFieldDelegate
                 self.SMSTextField.backgroundColor = UIColor.whiteColor()
                 self.SMSTextField.placeholder = "SMS код"
                 self.SMSTextField.userInteractionEnabled = true
+                self.SMSTextField.becomeFirstResponder()
             }
         }
-        ShowAlertView(self, "СМС с кодом", "Вам направлено смс с кодом, который необходимо ввести для продолжения регистрации", "Закрыть")
+//        ShowAlertView(self, "СМС с кодом", "Вам направлено смс с кодом, который необходимо ввести для продолжения регистрации", "Закрыть")
     }
     
     func SMSSendError(notification: NSNotification)
@@ -249,6 +250,16 @@ class RegistraionView: UIViewController, UITextFieldDelegate
     
     func RegisterError(notification: NSNotification)
     {
-        ShowAlertView(self, "Упс!", "Что-то пошло не так, возможно вы неверно указали код из смс сообщения, можете вернуться на предыдущий экран и проверить это", "Закрыть")
+        NSOperationQueue.mainQueue().addOperationWithBlock
+        {
+            let animation = CABasicAnimation(keyPath: "position")
+            animation.duration = 0.07
+            animation.repeatCount = 2
+            animation.autoreverses = true
+            animation.fromValue = NSValue(CGPoint: CGPointMake(self.SMSTextField.center.x - 5, self.SMSTextField.center.y))
+            animation.toValue = NSValue(CGPoint: CGPointMake(self.SMSTextField.center.x + 5, self.SMSTextField.center.y))
+            self.SMSTextField.layer.addAnimation(animation, forKey: "position")
+        }
+//        ShowAlertView(self, "Упс!", "Что-то пошло не так, возможно вы неверно указали код из смс сообщения, можете вернуться на предыдущий экран и проверить это", "Закрыть")
     }
 }

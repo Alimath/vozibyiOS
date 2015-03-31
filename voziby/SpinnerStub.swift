@@ -42,25 +42,25 @@ public class SpinnerStub: NSObject
     
     public class func show()
     {
-        if(!self.sharedInstance.spinner.isAnimating())
+        NSOperationQueue.mainQueue().addOperationWithBlock
         {
-            let window = UIApplication.sharedApplication().windows.first as UIWindow
-            self.sharedInstance.backImageView = UIImageView(image: captureScreen(window).blurredImageWithRadius(2, iterations: 5, tintColor: UIColor.clearColor()))
+            if(!self.sharedInstance.spinner.isAnimating())
+            {
+                let window = UIApplication.sharedApplication().windows.first as UIWindow
+                self.sharedInstance.backImageView = UIImageView(image: self.captureScreen(window).blurredImageWithRadius(2, iterations: 5, tintColor: UIColor.clearColor()))
+                
+                self.sharedInstance.spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+                self.sharedInstance.spinner.color = UIColor.darkGrayColor()
+                self.sharedInstance.spinner.center = window.center
+                self.sharedInstance.spinner.alpha = 1
             
-            self.sharedInstance.spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
-            self.sharedInstance.spinner.color = UIColor.darkGrayColor()
-            self.sharedInstance.spinner.center = window.center
-            self.sharedInstance.spinner.alpha = 0
-        
-            self.sharedInstance.spinner.startAnimating()
-            window.addSubview(self.sharedInstance.backImageView)
-            self.sharedInstance.backImageView.alpha = 0
-            window.addSubview(self.sharedInstance.spinner)
-            
-//            UIView.animateWithDuration(0.5, animations: { () -> Void in
-            self.sharedInstance.backImageView.alpha = 1
-            self.sharedInstance.spinner.alpha = 1
-//            })
+                self.sharedInstance.spinner.startAnimating()
+                
+                self.sharedInstance.backImageView.alpha = 1
+                
+                window.addSubview(self.sharedInstance.backImageView)
+                window.addSubview(self.sharedInstance.spinner)
+            }
         }
     }
     
