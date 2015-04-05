@@ -41,6 +41,8 @@ class Server
         
         SpinnerStub.show()
         
+        
+        
         net.GET(url, params: params, successHandler:
             { responseData in
                 let jsonDic: NSDictionary = responseData.json(error: nil)!
@@ -76,7 +78,7 @@ class Server
         net.GET(url, params: nil, successHandler:
         { (responseData) -> () in
             var string1 = NSString(data: responseData.data, encoding: NSUTF8StringEncoding)
-            println(string1)
+//            println(string1)
             
             var userDefaults = NSUserDefaults.standardUserDefaults()
             userDefaults.setBool(false, forKey: kVZIsLoginCompleteKey)
@@ -97,7 +99,7 @@ class Server
             { (responseData) -> () in
                 let jsonDic: NSDictionary = responseData.json(error: nil)!
                 var string1 = NSString(data: responseData.data, encoding: NSUTF8StringEncoding)
-                println(string1)
+//                println(string1)
                 self.saveCookies()
                 if(jsonDic.objectForKey("status") as String == "ok")
                 {
@@ -565,6 +567,75 @@ class Server
                 }
             }
             
+            
+            var offers: [OfferInfo] = []
+            if let offersArray: NSArray = order.objectForKey("offers") as? NSArray
+            {
+                if(offersArray.count > 0)
+                {
+                    for i in 0...(offersArray.count-1)
+                    {
+                        if let offerDic: NSDictionary = offersArray.objectAtIndex(i) as? NSDictionary
+                        {
+                            let offer: OfferInfo = OfferInfo()
+                            var companyID: Int = offerDic.objectForKey("company_id")!.integerValue
+                            var offercost: Int = offerDic.objectForKey("cost")!.integerValue
+                            var offerID: Int = offerDic.objectForKey("id")!.integerValue
+                            var offerStatus: OffersStatus
+                            
+                            if let status:OffersStatus = OffersStatus(rawValue: offerDic.objectForKey("status")!.integerValue)
+                            {
+                                offerStatus = status
+                            }
+                            else
+                            {
+                                offerStatus = OffersStatus.InProgress
+                            }
+                            
+                            offer.SetInfo(offerID, oStatus: offerStatus, oCompanyID: companyID, oCost: offercost)
+//                            println(offer)
+                            offers.append(offer)
+                        }
+                    }
+                }
+            }
+            
+            
+            var datesFromArray: [NSDate] = []
+            var fromDateString: String = order.objectForKey("from_date")! as String
+            if(fromDateString != "")
+            {
+                var datesStringArray = split(fromDateString) {$0 == ","}
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "dd.MM.yyyy"
+                dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+                for oneDateString in datesStringArray
+                {
+                    var oneDate = dateFormatter.dateFromString(oneDateString)
+                    datesFromArray.append(oneDate!)
+                }
+            }
+            
+            
+            var datesToArray: [NSDate] = []
+            var toDate: String = order.objectForKey("to_date")! as String
+            if(toDate != "")
+            {
+                var datesStringArray = split(toDate) {$0 == ","}
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "dd.MM.yyyy"
+                dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+                var datesArray: [NSDate] = []
+                for oneDateString in datesStringArray
+                {
+                    var oneDate = dateFormatter.dateFromString(oneDateString)
+                    datesToArray.append(oneDate!)
+                }
+//                println(toDate)
+//                println(dateFormatter.stringFromDate(datesToArray[0]))
+            }
+            
+            
             orderInfo.SetInfo(
                 ID,
                 gTransportType: transportType,
@@ -582,8 +653,8 @@ class Server
                 gToAddress: order.objectForKey("to_address")! as String,
                 gToStreet: order.objectForKey("to_street")! as String,
                 gToHouse: order.objectForKey("to_house")! as String,
-                gFromDate: order.objectForKey("from_date")! as String,
-                gToDate: order.objectForKey("to_date")! as String,
+                gFromDate: datesToArray,
+                gToDate: datesFromArray,
                 gHelpLoad: helpLoad,
                 gHelpUload: helpUnLoad,
                 gGoodName: order.objectForKey("good_name")! as String,
@@ -595,7 +666,7 @@ class Server
                 gPassagersCount: passagersCount,
                 gStatViews: statViews,
                 gLogos: logos,
-                gOffers: [OfferInfo()])
+                gOffers: offers)
             
             arrayWithOrders.append(orderInfo)
         }
@@ -633,6 +704,11 @@ class Server
                 }
             }
         }
+    }
+    
+    func LoadCompaniesWithFilters(filters: String, page: Int)
+    {
+        
     }
     
 }

@@ -13,6 +13,8 @@
 		A00F4EC31ABADB930054EF6F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00F4EC21ABADB930054EF6F /* SettingsView.swift */; };
 		A01734EF1AC9F390000DA388 /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01734EE1AC9F390000DA388 /* GoogleDataProvider.swift */; };
 		A01734F11AC9F39C000DA388 /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01734F01AC9F39C000DA388 /* GooglePlace.swift */; };
+		A01734F41ACAA0AD000DA388 /* CompanyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01734F31ACAA0AD000DA388 /* CompanyInfo.swift */; };
+		A01734F81ACD049A000DA388 /* SearchFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01734F71ACD049A000DA388 /* SearchFiltersView.swift */; };
 		A033BDBA1AA3E3A200BB7E9E /* PassReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A033BDB91AA3E3A200BB7E9E /* PassReminderView.swift */; };
 		A054E2B21AA89E94009F021E /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A054E2B11AA89E94009F021E /* SwiftSpinner.swift */; };
 		A054E2B41AA8ABE3009F021E /* SpinnerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = A054E2B31AA8ABE3009F021E /* SpinnerStub.swift */; };
@@ -72,6 +74,8 @@
 		A00F4EC21ABADB930054EF6F /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A01734EE1AC9F390000DA388 /* GoogleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDataProvider.swift; sourceTree = "<group>"; };
 		A01734F01AC9F39C000DA388 /* GooglePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlace.swift; sourceTree = "<group>"; };
+		A01734F31ACAA0AD000DA388 /* CompanyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyInfo.swift; sourceTree = "<group>"; };
+		A01734F71ACD049A000DA388 /* SearchFiltersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFiltersView.swift; sourceTree = "<group>"; };
 		A033BDB91AA3E3A200BB7E9E /* PassReminderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassReminderView.swift; sourceTree = "<group>"; };
 		A054E2B11AA89E94009F021E /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
 		A054E2B31AA8ABE3009F021E /* SpinnerStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerStub.swift; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 				A00DFD4D1AA2986B007DFBF8 /* Login */,
 				A0E55F451AA27FB0000A4F03 /* Server and Entities */,
 				A0E55F131AA27B4B000A4F03 /* BaseView.swift */,
+				A01734F71ACD049A000DA388 /* SearchFiltersView.swift */,
 				A09F15C71AC504DE00CE2074 /* OrderView.swift */,
 				A00F4EC21ABADB930054EF6F /* SettingsView.swift */,
 				A0B6CCE61AA4490A000DF352 /* MenuView.swift */,
@@ -338,6 +343,7 @@
 				A0B6CCEC1AA4E90D000DF352 /* UserInfo.swift */,
 				A09F15C31AC43B3400CE2074 /* OrderInfo.swift */,
 				A09F15C51AC4479400CE2074 /* OffersInfo.swift */,
+				A01734F31ACAA0AD000DA388 /* CompanyInfo.swift */,
 			);
 			name = "Server and Entities";
 			sourceTree = "<group>";
@@ -416,6 +422,7 @@
 			files = (
 				A0B6CCE71AA4490A000DF352 /* MenuView.swift in Sources */,
 				A08E72891AA2B829008CB6A4 /* NetResponseData.swift in Sources */,
+				A01734F81ACD049A000DA388 /* SearchFiltersView.swift in Sources */,
 				A08E72881AA2B829008CB6A4 /* NetRequestSerialization.swift in Sources */,
 				A09F15C81AC504DE00CE2074 /* OrderView.swift in Sources */,
 				A0B6CCED1AA4E90D000DF352 /* UserInfo.swift in Sources */,
@@ -438,6 +445,7 @@
 				A08E72871AA2B829008CB6A4 /* NetHelper.swift in Sources */,
 				A08E72921AA2D12F008CB6A4 /* AlertView.swift in Sources */,
 				A08E72611AA2AB79008CB6A4 /* TextFieldWithMargin.swift in Sources */,
+				A01734F41ACAA0AD000DA388 /* CompanyInfo.swift in Sources */,
 				A054E2DA1AAA5668009F021E /* VZMapViewController.swift in Sources */,
 				A08E72851AA2B829008CB6A4 /* NetData.swift in Sources */,
 				A01734F11AC9F39C000DA388 /* GooglePlace.swift in Sources */,

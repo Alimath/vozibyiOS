@@ -63,8 +63,8 @@ class AvatarPickerViewController: UIViewController, UIScrollViewDelegate, UIImag
         }
         self.navigationItem.title = "vozim.by"
         
-        let backButton = UIBarButtonItem(title: "Назад", style: UIBarButtonItemStyle.Plain, target: self, action: "Cancel")
-        navigationItem.leftBarButtonItem = backButton
+//        let backButton = UIBarButtonItem(title: "Назад", style: UIBarButtonItemStyle.Plain, target: self, action: "Cancel")
+//        navigationItem.leftBarButtonItem = backButton
         
         DoneButton.target = self
         DoneButton.action = "MakeShot:"
@@ -115,7 +115,10 @@ class AvatarPickerViewController: UIViewController, UIScrollViewDelegate, UIImag
     {
         if let image = imageView.image
         {
-            let navigationBarHeight = self.navigationController?.navigationBar.frame.height
+            
+//            println("CONSTRAINTS: imagesize: \(imageView.frame.size), scrollSize: \(self.scrollView.frame.size)")
+            
+//            let navigationBarHeight = self.navigationController?.navigationBar.frame.height
             
             let imageWidth = image.size.width
             let imageHeight = image.size.height
@@ -124,18 +127,19 @@ class AvatarPickerViewController: UIViewController, UIScrollViewDelegate, UIImag
             let viewHeight = self.scrollView.frame.height
 
             // center image if it is smaller than screen
-            var hPadding = (viewWidth - scrollView.zoomScale * imageWidth) / 2
-            if hPadding < 0 { hPadding = 0 }
+//            var hPadding = (viewWidth - scrollView.zoomScale * imageWidth) / 2
+//            if hPadding < 0 { hPadding = 0 }
+//
+//            var vPadding = (viewHeight - scrollView.zoomScale * imageHeight) / 2
+//            if vPadding < 0 { vPadding = 0 }
 
-            var vPadding = (viewHeight - scrollView.zoomScale * imageHeight) / 2
-            if vPadding < 0 { vPadding = 0 }
-
-            imageConstraintLeft.constant = hPadding
-            imageConstraintRight.constant = hPadding
-
-            imageConstraintTop.constant = vPadding - navigationBarHeight!*1.45
-            imageConstraintBottom.constant = vPadding
-
+//            imageConstraintLeft.constant = hPadding
+//            imageConstraintRight.constant = hPadding
+//
+//            imageConstraintTop.constant = vPadding - navigationBarHeight!*1.45
+//            imageConstraintBottom.constant = vPadding
+            
+            self.scrollView.contentSize = imageView.frame.size
             // Makes zoom out animation smooth and starting from the right point not from (0, 0)
             view.layoutIfNeeded()
         }
@@ -146,6 +150,7 @@ class AvatarPickerViewController: UIViewController, UIScrollViewDelegate, UIImag
     {
         if let image = imageView.image
         {
+//            println("AFTER CONSTRAINTS: imagesize: \(imageView.frame.size), scrollSize: \(self.scrollView.contentSize)")
             let navigationBarHeight = self.navigationController?.navigationBar.frame.height
             
             var minZoom: CGFloat = 1.0//= max(view.bounds.size.width / image.size.width, view.bounds.size.height / image.size.height)
@@ -170,6 +175,7 @@ class AvatarPickerViewController: UIViewController, UIScrollViewDelegate, UIImag
             scrollView.maximumZoomScale = minZoom * 2
             lastZoomScale = minZoom
         }
+        self.view.layoutIfNeeded()
     }
     
     @IBAction func MakeShot(sender: AnyObject)
@@ -206,7 +212,6 @@ class AvatarPickerViewController: UIViewController, UIScrollViewDelegate, UIImag
         imageView.image = chosenImage
         dismissViewControllerAnimated(true, completion: nil)
         updateZoom()
-//        AvatarScrollView.contentSize = AvatarImage.frame.size
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController)
@@ -355,7 +360,7 @@ class AvatarPickerViewController: UIViewController, UIScrollViewDelegate, UIImag
             }, failureBlock: { (error) -> Void in
                 println("error read image")
             })
-            self.lastSelectedImage = sender.object as UIButton
+//            self.lastSelectedImage = sender.object as UIButton
             self.ShowHideBigPhotoPicker(false)
 //            self.imageView.image = self.fullImages[sender.tag]
         }

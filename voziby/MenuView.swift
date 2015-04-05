@@ -139,6 +139,13 @@ class MenuView: UIViewController
         self.revealViewController().pushFrontViewController(navC, animated: true)
     }
     
+    @IBAction func searchTouchUpInside(sender: AnyObject)
+    {
+        let searchView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("SearchFiltersView") as UIViewController
+        revealViewController().revealToggle(self)
+        (self.revealViewController().frontViewController as UINavigationController).pushViewController(searchView, animated: true)
+    }
+    
     @IBAction func baseViewShow(sender: AnyObject)
     {
         if((self.revealViewController().frontViewController as UINavigationController).viewControllers[0].isKindOfClass(BaseView))

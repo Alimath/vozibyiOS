@@ -41,8 +41,8 @@ class OrderInfo : NSObject
     var toAddress: String = ""
     var toStreet: String = ""
     var toHouse: String = ""
-    var fromDate: String = ""
-    var toDate: String = ""
+    var fromDate: [NSDate] = []
+    var toDate: [NSDate] = []
     var helpLoad: Bool = false
     var helpUnload: Bool = false
     var goodName: String = ""
@@ -64,7 +64,7 @@ class OrderInfo : NSObject
         return descr
     }
     
-    func SetInfo(gID: Int, gTransportType: TransportType, gStatus: OrderStatus, gBudget: Int, gCashPayment: Bool, gNocashPayment: Bool, gCardPayment: Bool, gOnlinePayment: Bool, gWebpayPayment: Bool, gDistance: Float, gFromAddress: String, gFromStreet: String, gFromHouse: String, gToAddress: String, gToStreet: String, gToHouse: String, gFromDate: String, gToDate: String, gHelpLoad: Bool, gHelpUload: Bool, gGoodName: String, gWeight: Float, gLength: Float, gHeight: Float, gWidth: Float, gBaggage: Float, gPassagersCount: Int, gStatViews: Int, gLogos: [String], gOffers: [OfferInfo])
+    func SetInfo(gID: Int, gTransportType: TransportType, gStatus: OrderStatus, gBudget: Int, gCashPayment: Bool, gNocashPayment: Bool, gCardPayment: Bool, gOnlinePayment: Bool, gWebpayPayment: Bool, gDistance: Float, gFromAddress: String, gFromStreet: String, gFromHouse: String, gToAddress: String, gToStreet: String, gToHouse: String, gFromDate: [NSDate], gToDate: [NSDate], gHelpLoad: Bool, gHelpUload: Bool, gGoodName: String, gWeight: Float, gLength: Float, gHeight: Float, gWidth: Float, gBaggage: Float, gPassagersCount: Int, gStatViews: Int, gLogos: [String], gOffers: [OfferInfo])
     {
         self.id = gID
         self.transportType = gTransportType
@@ -99,18 +99,3 @@ class OrderInfo : NSObject
     }
     
 }
-
-
-
-//func GetUserInfo() -> OrderInfo
-//{
-//    var userDefaults = NSUserDefaults.standardUserDefaults()
-//    
-//    if let username = userDefaults.objectForKey(kVZUsernameKey) as? String
-//    {
-//        var orderInfo: OrderInfo = OrderInfo(userName: userName, personName: personName, location: location, email: email, notifyByEmail: notifyByEmail, phoneNumber: phoneNumber, notifyByPhone: notifyByPhone, logoPath: logoPath, passwordMD5: password)
-//        return orderInfo
-//    }
-
-//    return OrderInfo(userName: "", personName: "", location: "", email: "", notifyByEmail: false, phoneNumber: "", notifyByPhone: false, logoPath: "", passwordMD5: "")
-//}

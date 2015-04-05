@@ -22,7 +22,7 @@ class OfferInfo : NSObject
     
     override var description: String
     {
-        return "ID: \(id), status: \(status), companyID: \(companyID), cost: \(cost)"
+        return "ID: \(id), status: \(status.rawValue), companyID: \(companyID), cost: \(cost)"
     }
     
     func SetInfo(oID: Int, oStatus: OffersStatus, oCompanyID: Int, oCost: Int)
