@@ -52,10 +52,10 @@ class Server
                 
                 
                 
-                if(jsonDic.objectForKey("status") as String == "ok")
+                if(jsonDic.objectForKey("status") as! String == "ok")
                 {
                     NSUserDefaults.standardUserDefaults().setBool(true, forKey: kVZIsLoginCompleteKey)
-                    var userInfo: UserInfo = self.GetUserInfoFromServerData(jsonDic.objectForKey("data") as NSDictionary)
+                    var userInfo: UserInfo = self.GetUserInfoFromServerData(jsonDic.objectForKey("data") as! NSDictionary)
                     userInfo.passwordMD5 = password
                     SaveUserInfo(userInfo)
                     self.saveCookies()
@@ -101,7 +101,7 @@ class Server
                 var string1 = NSString(data: responseData.data, encoding: NSUTF8StringEncoding)
 //                println(string1)
                 self.saveCookies()
-                if(jsonDic.objectForKey("status") as String == "ok")
+                if(jsonDic.objectForKey("status") as! String == "ok")
                 {
                     var userInfo: UserInfo = UserInfo(userName: username, personName: personName, location: location, email: "", notifyByEmail: false, phoneNumber: username, notifyByPhone: false, logoPath: "", passwordMD5: password)
                     SaveUserInfo(userInfo)
@@ -131,7 +131,7 @@ class Server
         { (responseData) -> () in
             SpinnerStub.hide()
             let jsonDic: NSDictionary = responseData.json(error: nil)!
-            if(jsonDic.objectForKey("status") as String == "ok")
+            if(jsonDic.objectForKey("status") as! String == "ok")
             {
                 println(jsonDic)
                 NSNotificationCenter.defaultCenter().postNotificationName("smssend", object: nil)
@@ -174,7 +174,7 @@ class Server
                 let jsonDic: NSDictionary = responseData.json(error: nil)!
                 var string1 = NSString(data: responseData.data, encoding: NSUTF8StringEncoding)
 //                println(string1)
-                if(jsonDic.objectForKey("status") as String == "ok")
+                if(jsonDic.objectForKey("status") as! String == "ok")
                 {
                     NSNotificationCenter.defaultCenter().postNotificationName("avatarUpdated", object: nil)
 //                    println("123")
@@ -280,7 +280,6 @@ class Server
     
     func UpdateUserInfo(userInfo:UserInfo)
     {
-//        println(userInfo.description)
         SpinnerStub.show()
         
         var url = "api/personalinfo"
@@ -331,10 +330,9 @@ class Server
         net.POST(url, params: nil, successHandler:
             { (responseData) -> () in
             let jsonDic: NSDictionary = responseData.json(error: nil)!
-                
-            if((jsonDic.objectForKey("status") as String) == "ok")
+            if((jsonDic.objectForKey("status") as! String) == "ok")
             {
-                Server.sharedInstance.loadedOrders = self.GetOrdersArrayFromServerData(jsonDic.objectForKey("data") as [NSDictionary])
+                Server.sharedInstance.loadedOrders = self.GetOrdersArrayFromServerData(jsonDic.objectForKey("data") as! [NSDictionary])
                 
                 NSNotificationCenter.defaultCenter().postNotificationName("OrdersLoaded", object: nil)
             }
@@ -343,12 +341,29 @@ class Server
             }
                 
             var string1 = NSString(data: responseData.data, encoding: NSUTF8StringEncoding)
-//            println("\(jsonDic)")
+//            println("\(string1)")
         }) { (error) -> () in
                 println("error: \(error)")
         }
     }
     
+    
+    
+    func LoadCompaniesWithFilters(filters: [String:String], page: Int)
+    {
+        var url = "/api/companies"//transport?CompanyTransport[id]=63"
+        
+        println(filters)
+        net.POST(url, params: filters, successHandler:
+            { (responseData) -> () in
+                let string1 = NSString(data: responseData.data, encoding: NSUTF8StringEncoding)
+                println("\(string1)")
+            }) { (error) -> () in
+                println("error: \(error)")
+        }
+    }
+    
+    // MARK: Parsers
     
     /// parse user data from server to UserInfo struct
     ///
@@ -359,17 +374,17 @@ class Server
     {
         var retUserInfo: UserInfo = GetUserInfo()
         
-        var userName: String = serverData.objectForKey("username") as String
-        var personName: String = serverData.objectForKey("personname") as String
-        var location: String = serverData.objectForKey("location") as String
+        var userName: String = serverData.objectForKey("username") as! String
+        var personName: String = serverData.objectForKey("personname") as! String
+        var location: String = serverData.objectForKey("location") as! String
         var email: String = ""
         if let emailTemp: String = serverData.objectForKey("email") as? String
         {
             email = emailTemp
         }
-        var notifyByEmail: Bool = ((serverData.objectForKey("notify_by_email") as String).toInt() == 0) ? false : true
-        var phoneNumber: String = serverData.objectForKey("phone") as String
-        var notifyByPhone: Bool = ((serverData.objectForKey("notify_by_phone") as String).toInt() == 0) ? false : true
+        var notifyByEmail: Bool = ((serverData.objectForKey("notify_by_email") as! String).toInt() == 0) ? false : true
+        var phoneNumber: String = serverData.objectForKey("phone") as! String
+        var notifyByPhone: Bool = ((serverData.objectForKey("notify_by_phone") as! String).toInt() == 0) ? false : true
         var logo: String = ""
         if let logoTemp: String =  serverData.objectForKey("logo") as? String
         {
@@ -563,7 +578,7 @@ class Server
             {
                 for (name, path) in ass
                 {
-                    logos.append(path as String)
+                    logos.append(path as! String)
                 }
             }
             
@@ -593,7 +608,6 @@ class Server
                             }
                             
                             offer.SetInfo(offerID, oStatus: offerStatus, oCompanyID: companyID, oCost: offercost)
-//                            println(offer)
                             offers.append(offer)
                         }
                     }
@@ -602,7 +616,7 @@ class Server
             
             
             var datesFromArray: [NSDate] = []
-            var fromDateString: String = order.objectForKey("from_date")! as String
+            var fromDateString: String = order.objectForKey("from_date")! as! String
             if(fromDateString != "")
             {
                 var datesStringArray = split(fromDateString) {$0 == ","}
@@ -618,7 +632,7 @@ class Server
             
             
             var datesToArray: [NSDate] = []
-            var toDate: String = order.objectForKey("to_date")! as String
+            var toDate: String = order.objectForKey("to_date")! as! String
             if(toDate != "")
             {
                 var datesStringArray = split(toDate) {$0 == ","}
@@ -631,10 +645,123 @@ class Server
                     var oneDate = dateFormatter.dateFromString(oneDateString)
                     datesToArray.append(oneDate!)
                 }
-//                println(toDate)
-//                println(dateFormatter.stringFromDate(datesToArray[0]))
             }
             
+            //дополнительные опции
+            //важно наличие груз
+            var gidrolift: Bool = false
+            var backLoading: Bool = false
+            var sideLoading: Bool = false
+            var gidroCart: Bool = false
+            
+            //важно наличие пассажиры
+            var tv: Bool = false
+            var table: Bool = false
+            var cooler: Bool = false
+            var miniBar: Bool = false
+            var adjustableSeats: Bool = false
+            
+            //примечание авто
+            var divorcedWheel: Bool = false
+            var blockTheWheel: Bool = false
+            var inCuvette: Bool = false
+            var blockControl: Bool = false
+            var emergencyState: Bool = false
+            var damagedSuspension: Bool = false
+            //важно наличие авто
+            var winch: Bool = false
+            var gidroManipulator: Bool = false
+            var slidingPlatform: Bool = false
+            
+            var furnitureUtilization: Bool = false
+            
+            if let options: [NSDictionary] = order.objectForKey("options") as? [NSDictionary]
+            {
+                
+                for option in options
+                {
+                    if let id = option.objectForKey("id")!.integerValue
+                    {
+                        switch id
+                        {
+                        case 2: tv = true
+                        case 4: miniBar = true
+                        case 11: table = true
+                        case 12: adjustableSeats = true
+                        case 13: cooler = true
+                        case 1: gidrolift = true
+                        case 6: backLoading = true
+                        case 7: sideLoading = true
+                        case 26: gidroCart = true
+                        case 20: winch = true
+                        case 21: slidingPlatform = true
+                        case 22: gidroManipulator = true
+                        case 16: furnitureUtilization = true
+                        default: println("no found ID in options: \(id)")
+                        }
+                    }
+                }
+            }
+            
+            if let cardeliverys: [NSDictionary] = order.objectForKey("cardelivery") as? [NSDictionary]
+            {
+                for cardelivery in cardeliverys
+                {
+                    if let id = cardelivery.objectForKey("id")!.integerValue
+                    {
+                        switch id
+                        {
+                        case 1: blockTheWheel = true
+                        case 2: inCuvette = true
+                        case 3: blockControl = true
+                        case 4: divorcedWheel = true
+                        case 5: emergencyState = true
+                        case 6: damagedSuspension = true
+                        default: println("no found ID in cardelivery: \(id)")
+                        }
+                    }
+                }
+            }
+            
+            var carDatasList: [AutoData] = []
+            if let carDataList: [NSDictionary] = order.objectForKey("autoDatalist") as? [NSDictionary]
+            {
+                var carCategory: AutoType = AutoType.Passenger
+                var carCost: Int = 0
+                var carCurrency: String = "USD"
+                
+                for carData in carDataList
+                {
+                    
+                    var numberFormatter: NSNumberFormatter = NSNumberFormatter()
+                    numberFormatter.formatterBehavior = NSNumberFormatterBehavior.Behavior10_4
+                    numberFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+                    numberFormatter.groupingSeparator = "."
+                    
+                    if let category = carData.objectForKey("category")!.integerValue
+                    {
+                        if let autoTypeCategory = AutoType(rawValue: category)
+                        {
+                            carCategory = autoTypeCategory
+                        }
+                    }
+                    if let cost = carData.objectForKey("cost")! as? String
+                    {
+                        carCost = numberFormatter.numberFromString(cost)!.integerValue
+                    }
+                    
+                    carCurrency = carData.objectForKey("currency")! as! String
+                    
+                    var autoData: AutoData = AutoData(aCategory: carCategory, aCost: carCost, aCurrency: carCurrency)
+                    carDatasList.append(autoData)
+                }
+            }
+            
+            var autoDescription: String = ""
+            if let autoDescriptionTest = order.objectForKey("auto_description")! as? String
+            {
+                autoDescription = autoDescriptionTest
+            }
             
             orderInfo.SetInfo(
                 ID,
@@ -647,17 +774,17 @@ class Server
                 gOnlinePayment: onlinePayment,
                 gWebpayPayment: webPayment,
                 gDistance: distance,
-                gFromAddress: order.objectForKey("from_address")! as String,
-                gFromStreet: order.objectForKey("from_street")! as String,
-                gFromHouse: order.objectForKey("from_house")! as String,
-                gToAddress: order.objectForKey("to_address")! as String,
-                gToStreet: order.objectForKey("to_street")! as String,
-                gToHouse: order.objectForKey("to_house")! as String,
-                gFromDate: datesToArray,
-                gToDate: datesFromArray,
+                gFromAddress: order.objectForKey("from_address")! as! String,
+                gFromStreet: order.objectForKey("from_street")! as! String,
+                gFromHouse: order.objectForKey("from_house")! as! String,
+                gToAddress: order.objectForKey("to_address")! as! String,
+                gToStreet: order.objectForKey("to_street")! as! String,
+                gToHouse: order.objectForKey("to_house")! as! String,
+                gFromDate: datesFromArray,
+                gToDate: datesToArray,
                 gHelpLoad: helpLoad,
                 gHelpUload: helpUnLoad,
-                gGoodName: order.objectForKey("good_name")! as String,
+                gGoodName: order.objectForKey("good_name")! as! String,
                 gWeight: weight,
                 gLength: length,
                 gHeight: height,
@@ -666,7 +793,29 @@ class Server
                 gPassagersCount: passagersCount,
                 gStatViews: statViews,
                 gLogos: logos,
-                gOffers: offers)
+                gOffers: offers,
+                gAutoDescription: autoDescription,
+                gGidroLift: gidrolift,
+                gBackLoading: backLoading,
+                gSideLoading: sideLoading,
+                gGidrocart: gidroCart,
+                gTV: tv,
+                gTable: table,
+                gCooler: cooler,
+                gMiniBar: miniBar,
+                gAdjustableSeats: adjustableSeats,
+                gDivorcedWheel: divorcedWheel,
+                gBlockTheWheel: blockTheWheel,
+                gInCuvette: inCuvette,
+                gBlockControll: blockControl,
+                gEmergencyState: emergencyState,
+                gDamagedSuspension: damagedSuspension,
+                gWinch: winch,
+                gGidroManipulator: gidroManipulator,
+                gSlidingPlatform: slidingPlatform,
+                gFurnitureUtilization: furnitureUtilization,
+                gAutoDataList: carDatasList
+            )
             
             arrayWithOrders.append(orderInfo)
         }
@@ -693,24 +842,18 @@ class Server
         var cookiesData: AnyObject? = defaults.objectForKey("sessionCookies")
         if(cookiesData != nil)
         {
-            var cookiesDataUnarchived: AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithData(cookiesData as NSData)
+            var cookiesDataUnarchived: AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithData(cookiesData as! NSData)
             if((cookiesDataUnarchived) != nil)
             {
-                var cookies: NSArray! = cookiesDataUnarchived as NSArray
+                var cookies: NSArray! = cookiesDataUnarchived as! NSArray
                 var cookieStorage: NSHTTPCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
                 for cookie in cookies
                 {
-                    cookieStorage.setCookie(cookie as NSHTTPCookie)
+                    cookieStorage.setCookie(cookie as! NSHTTPCookie)
                 }
             }
         }
     }
-    
-    func LoadCompaniesWithFilters(filters: String, page: Int)
-    {
-        
-    }
-    
 }
 
 

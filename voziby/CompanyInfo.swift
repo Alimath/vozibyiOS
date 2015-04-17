@@ -12,6 +12,7 @@ class CompanyInfo : NSObject
 {
     var id: Int = 0
     var name: String = ""
+    var logo: String = ""
     var rateBYR: Int = 0
     var ratePerHour: Int = 0
     var ratePerKM: Int = 0
@@ -19,7 +20,8 @@ class CompanyInfo : NSObject
     var email: [String] = []
     var phones: [String] = []
     var skype: [String] = []
-    var logo: String = ""
+    var website: [String] = []
+    var slug: String = ""
     var organizationType: String = ""
     var descr: String = ""
     var reliability: Int = 0
@@ -33,15 +35,5 @@ class CompanyInfo : NSObject
     var cardPayment: Bool = false
     var onlinePayment: Bool = false
     var webpayPayment: Bool = false
-    var slug: String = ""
-    var website: [String] = []
-    var worktimeFrom: String = ""
-    var worktimeTo: String = ""
-    var day1: Bool = false
-    var day2: Bool = false
-    var day3: Bool = false
-    var day4: Bool = false
-    var day5: Bool = false
-    var day6: Bool = false
-    var day7: Bool = false
+    var logoImage: UIImage? = nil
 }

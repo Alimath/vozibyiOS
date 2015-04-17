@@ -97,7 +97,7 @@ class SettingsView: UIViewController, UITextFieldDelegate
     
     func textFieldTextChanged(sender : AnyObject)
     {
-        var textField: UITextField = sender.object as UITextField
+        var textField: UITextField = sender.object as! UITextField
         var tempText = textField.text
         if(textField.tag == 1001)
         {
@@ -126,7 +126,7 @@ class SettingsView: UIViewController, UITextFieldDelegate
                 self.PhoneTextField.text = phoneFormat.format(self.PhoneTextField.text)
             }
             
-            if(textField.text.utf16Count < 1)
+            if(textField.text.length() < 1)
             {
                 textField.text = "+"
             }
@@ -144,7 +144,7 @@ class SettingsView: UIViewController, UITextFieldDelegate
     
     func textFieldDidBeginEditing(textField: UITextField)
     {
-        if(textField.text.utf16Count < 1 && textField.tag == 1001)
+        if(textField.text.length() < 1 && textField.tag == 1001)
         {
             textField.text = "+"
         }
@@ -165,7 +165,7 @@ class SettingsView: UIViewController, UITextFieldDelegate
                 textField.textColor = UIColor.blackColor()
             }
             
-            if(textField.text.utf16Count == 1 && textField.tag == 1001)
+            if(textField.text.length() == 1 && textField.tag == 1001)
             {
                 textField.text = ""
             }
@@ -231,9 +231,9 @@ class SettingsView: UIViewController, UITextFieldDelegate
         NSOperationQueue.mainQueue().addOperationWithBlock
         {
             
-            let loginView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("LoginView") as UIViewController
+            let loginView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("LoginView") as! UIViewController
             
-            let startNavC = self.storyboard?.instantiateViewControllerWithIdentifier("startNavController") as UINavigationController
+            let startNavC = self.storyboard?.instantiateViewControllerWithIdentifier("startNavController") as! UINavigationController
             
 //            var navC = UINavigationController(rootViewController: loginView)
             

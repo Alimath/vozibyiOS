@@ -8,7 +8,7 @@
 import Foundation
 
 typealias GCDClosure = () -> ()
-typealias GCDApplyClosure = (UInt) -> ()
+typealias GCDApplyClosure = (Int) -> ()
 typealias GCDOnce = dispatch_once_t
 
 enum QueueType {
@@ -218,11 +218,12 @@ class gcd
     *  this method waits for all iterations of the task block to complete before returning
     *
     *  @param QueueType       :  the queue (main or serially or concurrently) on which to submit the block
-    *  @param UInt            :  the number of iterations to perform
+    *  @param Int             :  the number of iterations to perform
     *  @param GCDApplyClosure :  the block will be run
     *
     */
-    class func apply(queueType: QueueType, interators: UInt, closure: GCDApplyClosure) {
+    class func apply(queueType: QueueType, interators: Int, closure: GCDApplyClosure)
+    {
         dispatch_apply(interators, queueType.getQueue(), closure)
     }
     

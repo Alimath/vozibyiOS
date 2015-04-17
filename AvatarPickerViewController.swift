@@ -183,7 +183,7 @@ class AvatarPickerViewController: UIViewController, UIScrollViewDelegate, UIImag
         picker.allowsEditing = false
         picker.sourceType = UIImagePickerControllerSourceType.Camera
         picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureMode.Photo
-        presentViewController(picker, animated: true, nil)
+        presentViewController(picker, animated: true, completion: nil)
     }
 
     // UIScrollViewDelegate
@@ -207,7 +207,7 @@ class AvatarPickerViewController: UIViewController, UIScrollViewDelegate, UIImag
     //MARK: Delegates
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject])
     {
-        var chosenImage = info[UIImagePickerControllerOriginalImage] as UIImage
+        var chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         imageView.image = chosenImage
         dismissViewControllerAnimated(true, completion: nil)
@@ -281,7 +281,7 @@ class AvatarPickerViewController: UIViewController, UIScrollViewDelegate, UIImag
                     }
                     else
                     {
-                        var assetURL = asset.valueForProperty(ALAssetPropertyAssetURL) as NSURL
+                        var assetURL = asset.valueForProperty(ALAssetPropertyAssetURL) as! NSURL
                         
                         self.assetsURLs.append(assetURL)
                         // For just the thumbnails use the following line.
@@ -321,7 +321,7 @@ class AvatarPickerViewController: UIViewController, UIScrollViewDelegate, UIImag
                 var thumbImageView = UIImageView(image: image)
                 thumbImageView.frame = CGRectMake(oneImageSize * CGFloat(i) + 1, oneImageSize * CGFloat(j) + 1, oneImageSize - 2, oneImageSize - 2)
                 
-                var imagePickBtn = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+                var imagePickBtn = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
                 imagePickBtn.frame = CGRectMake(oneImageSize * CGFloat(i) + 1, oneImageSize * CGFloat(j) + 1, oneImageSize - 2, oneImageSize - 2)
                 imagePickBtn.backgroundColor = UIColor.clearColor()
                 imagePickBtn.addTarget(self, action: "ClickEventOnImage:", forControlEvents: UIControlEvents.TouchUpInside)

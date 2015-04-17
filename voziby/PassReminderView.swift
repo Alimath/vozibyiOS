@@ -40,11 +40,12 @@ class PassReminderView: UIViewController, UITextFieldDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent)
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent)
     {
         super.touchesBegan(touches, withEvent: event)
-        phoneNumberTextField.resignFirstResponder()
-        SMSTextField.resignFirstResponder()
+        self.view.endEditing(true)
+//        phoneNumberTextField.resignFirstResponder()
+//        SMSTextField.resignFirstResponder()
     }
 
     func Cancel()
@@ -67,7 +68,7 @@ class PassReminderView: UIViewController, UITextFieldDelegate
     
     func textFieldTextChanged(sender : AnyObject)
     {
-        var textField: UITextField = sender.object as UITextField
+        var textField: UITextField = sender.object as! UITextField
         var tempText = textField.text
         if(textField.tag == 1001)
         {
@@ -96,7 +97,7 @@ class PassReminderView: UIViewController, UITextFieldDelegate
                 phoneNumberTextField.text = phoneFormat.format(phoneNumberTextField.text)
             }
             
-            if(textField.text.utf16Count < 1)
+            if(textField.text.length() < 1)
             {
                 textField.text = "+"
             }
@@ -114,7 +115,7 @@ class PassReminderView: UIViewController, UITextFieldDelegate
     
     func textFieldDidBeginEditing(textField: UITextField)
     {
-        if(textField.text.utf16Count < 1 && textField.tag == 1001)
+        if(textField.text.length() < 1 && textField.tag == 1001)
         {
             textField.text = "+"
         }
@@ -135,7 +136,7 @@ class PassReminderView: UIViewController, UITextFieldDelegate
                 textField.textColor = UIColor.blackColor()
             }
             
-            if(textField.text.utf16Count == 1 && textField.tag == 1001)
+            if(textField.text.length() == 1 && textField.tag == 1001)
             {
                 textField.text = ""
             }

@@ -64,10 +64,6 @@ class LoginView: UIViewController, UITextFieldDelegate
             selector: "loginComplete:",
             name:"registersuccesfully",
             object: nil)
-    
-//        SwiftSpinner.show("Идет загрузка", animated: true)
-//        var userInfo = UserInfo(userName: "a", personName: "a", location: "a", email: "A", notifyByEmail: true, phoneNumber: "A", notifyByPhone: true, logo: true)
-//        userInfo.loadUserInfo()
     }
     
     override func didReceiveMemoryWarning()
@@ -80,17 +76,18 @@ class LoginView: UIViewController, UITextFieldDelegate
     {
         NSOperationQueue.mainQueue().addOperationWithBlock
         {
-            self.phoneNumberTextField.resignFirstResponder()
-            self.passwordTextField.resignFirstResponder()
+//            self.phoneNumberTextField.resignFirstResponder()
+//            self.passwordTextField.resignFirstResponder()
+            self.view.endEditing(true)
 //            let mainView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainView") as UIViewController
-            let mainView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainView") as UIViewController
+            let mainView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainView") as! UIViewController
             self.navigationController?.presentViewController(mainView, animated: true, completion: nil)
         }
     }
     
     func textFieldTextChanged(sender : AnyObject)
     {
-        var textField: UITextField = sender.object as UITextField
+        var textField: UITextField = sender.object as! UITextField
         if(textField.tag == 1001)
         {
             var tempText = textField.text
@@ -117,7 +114,7 @@ class LoginView: UIViewController, UITextFieldDelegate
                 phoneNumberTextField.text = phoneFormat.format(phoneNumberTextField.text)
             }
             
-            if(textField.text.utf16Count < 1)
+            if(textField.text.length() < 1)
             {
                 textField.text = "+"
             }
@@ -135,7 +132,7 @@ class LoginView: UIViewController, UITextFieldDelegate
     
     func textFieldDidBeginEditing(textField: UITextField)
     {
-        if(textField.text.utf16Count < 1 && textField.tag == 1001)
+        if(textField.text.length() < 1 && textField.tag == 1001)
         {
             textField.text = "+"
         }
@@ -156,14 +153,14 @@ class LoginView: UIViewController, UITextFieldDelegate
                 textField.textColor = UIColor.blackColor()
             }
             
-            if(textField.text.utf16Count == 1 && textField.tag == 1001)
+            if(textField.text.length() == 1 && textField.tag == 1001)
             {
                 textField.text = ""
             }
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField!) -> Bool
+    func textFieldShouldReturn(textField: UITextField) -> Bool
     {
         textField.resignFirstResponder()
         
@@ -186,11 +183,12 @@ class LoginView: UIViewController, UITextFieldDelegate
         return true;
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent)
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent)
     {
         super.touchesBegan(touches, withEvent: event)
-        phoneNumberTextField.resignFirstResponder()
-        passwordTextField.resignFirstResponder()
+        self.view.endEditing(true)
+//        phoneNumberTextField.resignFirstResponder()
+//        passwordTextField.resignFirstResponder()
     }
 }
 

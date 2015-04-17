@@ -14,5 +14,6 @@
 #import "SWRevealViewController.h"
 #import "FXBlurView.h"
 #import "GoogleMaps/GoogleMaps.h"
+#import "TestFairy.h"
 
 #endif

@@ -51,15 +51,15 @@ func GetUserInfo() -> UserInfo
     
     if let username = userDefaults.objectForKey(kVZUsernameKey) as? String
     {
-        let userName = userDefaults.objectForKey(kVZUsernameKey) as String
-        let personName = userDefaults.objectForKey(kVZNameKey) as String
-        let location = userDefaults.objectForKey(kVZLocationKey) as String
-        let email = userDefaults.objectForKey(kVZEmailKey) as String
+        let userName = userDefaults.objectForKey(kVZUsernameKey) as! String
+        let personName = userDefaults.objectForKey(kVZNameKey) as! String
+        let location = userDefaults.objectForKey(kVZLocationKey) as! String
+        let email = userDefaults.objectForKey(kVZEmailKey) as! String
         let notifyByEmail = userDefaults.boolForKey(kVZNotifyByEmailKey)
-        let phoneNumber = userDefaults.objectForKey(kVZPhoneNumberKey) as String
+        let phoneNumber = userDefaults.objectForKey(kVZPhoneNumberKey) as! String
         let notifyByPhone = userDefaults.boolForKey(kVZNotifyByPhoneKey)
-        let logoPath = userDefaults.objectForKey(kVZLogoPath) as String
-        let password = userDefaults.objectForKey(kVZPasswordKey) as String
+        let logoPath = userDefaults.objectForKey(kVZLogoPath) as! String
+        let password = userDefaults.objectForKey(kVZPasswordKey) as! String
         
         var userInfo: UserInfo = UserInfo(userName: userName, personName: personName, location: location, email: email, notifyByEmail: notifyByEmail, phoneNumber: phoneNumber, notifyByPhone: notifyByPhone, logoPath: logoPath, passwordMD5: password)
         return userInfo

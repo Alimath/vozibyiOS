@@ -44,6 +44,7 @@ class BaseView: UIViewController, UITableViewDelegate, UITableViewDataSource
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+        println("321321321")
         // Dispose of any resources that can be recreated.
     }
     
@@ -69,7 +70,7 @@ class BaseView: UIViewController, UITableViewDelegate, UITableViewDataSource
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("infoCell") as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("infoCell") as! UITableViewCell
         
         let row = indexPath.row
         cell.textLabel?.text = Server.sharedInstance.loadedOrders[row].goodName
@@ -86,7 +87,7 @@ class BaseView: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
 //        let orderView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("VZMap") as UIViewController
-        let orderView: OrderView = self.storyboard?.instantiateViewControllerWithIdentifier("OrderView") as OrderView
+        let orderView: OrderView = self.storyboard?.instantiateViewControllerWithIdentifier("OrderView") as! OrderView
         orderView.currentOrder = Server.sharedInstance.loadedOrders[indexPath.row]
         self.navigationController?.pushViewController(orderView, animated: true)
     }

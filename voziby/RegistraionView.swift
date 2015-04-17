@@ -54,13 +54,15 @@ class RegistraionView: UIViewController, UITextFieldDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent)
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent)
     {
         super.touchesBegan(touches, withEvent: event)
-        SMSTextField.resignFirstResponder()
-        CityTextField.resignFirstResponder()
-        phoneNumberTextField.resignFirstResponder()
-        NameTextField.resignFirstResponder()
+        self.view.endEditing(true)
+//        SMSTextField.resignFirstResponder()
+//        CityTextField.resignFirstResponder()
+//        phoneNumberTextField.resignFirstResponder()
+//        NameTextField.resignFirstResponder()
     }
     
     func Done()
@@ -119,10 +121,11 @@ class RegistraionView: UIViewController, UITextFieldDelegate
         }
         else
         {
-            SMSTextField.resignFirstResponder()
-            CityTextField.resignFirstResponder()
-            phoneNumberTextField.resignFirstResponder()
-            NameTextField.resignFirstResponder()
+            self.view.endEditing(true)
+//            SMSTextField.resignFirstResponder()
+//            CityTextField.resignFirstResponder()
+//            phoneNumberTextField.resignFirstResponder()
+//            NameTextField.resignFirstResponder()
             Server.sharedInstance.SendSMS(self.phoneNumberTextField.text.StringWithoutPhoneFormat())
         }
     }
@@ -130,7 +133,7 @@ class RegistraionView: UIViewController, UITextFieldDelegate
     
     func textFieldTextChanged(sender : AnyObject)
     {
-        var textField: UITextField = sender.object as UITextField
+        var textField: UITextField = sender.object as! UITextField
         var tempText = textField.text
         if(textField.tag == 1001)
         {
@@ -159,7 +162,7 @@ class RegistraionView: UIViewController, UITextFieldDelegate
                 phoneNumberTextField.text = phoneFormat.format(phoneNumberTextField.text)
             }
             
-            if(textField.text.utf16Count < 1)
+            if(textField.text.length() < 1)
             {
                 textField.text = "+"
             }
@@ -177,7 +180,7 @@ class RegistraionView: UIViewController, UITextFieldDelegate
     
     func textFieldDidBeginEditing(textField: UITextField)
     {
-        if(textField.text.utf16Count < 1 && textField.tag == 1001)
+        if(textField.text.length() < 1 && textField.tag == 1001)
         {
             textField.text = "+"
         }
@@ -198,7 +201,7 @@ class RegistraionView: UIViewController, UITextFieldDelegate
                 textField.textColor = UIColor.blackColor()
             }
             
-            if(textField.text.utf16Count == 1 && textField.tag == 1001)
+            if(textField.text.length() == 1 && textField.tag == 1001)
             {
                 textField.text = ""
             }
@@ -230,7 +233,7 @@ class RegistraionView: UIViewController, UITextFieldDelegate
     {
         println(notification)
         var userDefaults = NSUserDefaults.standardUserDefaults()
-        var address: String = userDefaults.objectForKey(kVZTempLocationKey) as String
+        var address: String = userDefaults.objectForKey(kVZTempLocationKey) as! String
         self.CityTextField.text = address
     }
     
@@ -242,7 +245,7 @@ class RegistraionView: UIViewController, UITextFieldDelegate
             userDefaults.setBool(true, forKey: kVZIsLoginCompleteKey)
             userDefaults.synchronize()
                         
-            let mainView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainView") as UIViewController
+            let mainView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MainView") as! UIViewController
             self.navigationController?.presentViewController(mainView, animated: true, completion: nil)
         }
 //        ShowAlertView(self, "Позравляем!", "Поздравляем, вы успешно зарегестрировались. Теперь перейдите в главное окно и войдите в аккаунт, приятного использования нашего приложения", "Закрыть")

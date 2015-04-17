@@ -26,11 +26,11 @@ extension String
         
         result.destroy()
         
-        return String(format: hash)
+        return String(format: hash as String)
     }
     
     func removeCharsFromEnd(count:Int) -> String{
-        let stringLength = countElements(self)
+        let stringLength = self.length()
         
         let substringIndex = (stringLength < count) ? 0 : stringLength - count
         
@@ -38,7 +38,7 @@ extension String
     }
     
     func length() -> Int {
-        return countElements(self)
+        return count(self)
     }
     
     func StringWithoutPhoneFormat() -> String

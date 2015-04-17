@@ -85,3 +85,9 @@ class TextFieldWithMargin: UITextField
         return newBounds
     }
 }
+
+extension String {
+    var floatValue: Float {
+        return (self as NSString).floatValue
+    }
+}

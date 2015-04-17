@@ -27,9 +27,9 @@ class ResponseData
     *  @return json dictionary
     */
     func json(error: NSErrorPointer = nil) -> NSDictionary? {
-        let httpResponse = urlResponse as NSHTTPURLResponse
+        let httpResponse = urlResponse as! NSHTTPURLResponse
         if httpResponse.statusCode == 200 {
-            let jsonData = NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments, error: error) as NSDictionary
+            let jsonData = NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments, error: error) as! NSDictionary
             return jsonData
         }
         else if error != nil {
@@ -45,7 +45,7 @@ class ResponseData
     *  @return UIImage
     */
     func image(error: NSErrorPointer = nil) -> UIImage? {
-        let httpResponse = urlResponse as NSHTTPURLResponse
+        let httpResponse = urlResponse as! NSHTTPURLResponse
         if httpResponse.statusCode == 200 && data.length > 0 {
             return UIImage(data: data)
         }
@@ -64,7 +64,7 @@ class ResponseData
     *  @return
     */
     func parseXml(delegate: NSXMLParserDelegate, error: NSErrorPointer = nil) -> Bool {
-        let httpResponse = urlResponse as NSHTTPURLResponse
+        let httpResponse = urlResponse as! NSHTTPURLResponse
         if httpResponse.statusCode == 200 {
             let xmlParser = NSXMLParser(data: data)
             xmlParser.delegate = delegate

@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         GMSServices.provideAPIKey(googleMapsApiKey)
+        TestFairy.begin("286850adf9902744a28abc6ad314efed1454651a")
+        TestFairy.setCorrelationId(UIDevice.currentDevice().name)
         NSUserDefaults.standardUserDefaults().synchronize()
         return true
     }

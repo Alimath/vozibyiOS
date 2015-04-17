@@ -46,7 +46,7 @@ public class SpinnerStub: NSObject
         {
             if(!self.sharedInstance.spinner.isAnimating())
             {
-                let window = UIApplication.sharedApplication().windows.first as UIWindow
+                let window = UIApplication.sharedApplication().windows.first as! UIWindow
                 self.sharedInstance.backImageView = UIImageView(image: self.captureScreen(window).blurredImageWithRadius(2, iterations: 5, tintColor: UIColor.clearColor()))
                 
                 self.sharedInstance.spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)

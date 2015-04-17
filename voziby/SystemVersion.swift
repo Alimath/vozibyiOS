@@ -19,8 +19,8 @@ func GetSystemVersion() -> Int
 }
 
 func DocumentsPathForFileName(name: String) -> String {
-    let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true);
-    let path = paths[0] as String;
+    let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+    let path = paths[0] as! String
     let fullPath = path.stringByAppendingPathComponent(name)
     
     return fullPath

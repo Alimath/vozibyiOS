@@ -121,40 +121,40 @@ class MenuView: UIViewController
     
     @IBAction func avatarTouchUpInside(sender: AnyObject)
     {
-        let photoPickView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AvatarPicker") as UIViewController
+        let photoPickView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AvatarPicker") as! UIViewController
         revealViewController().revealToggle(self)
-        (self.revealViewController().frontViewController as UINavigationController).pushViewController(photoPickView, animated: true)
+        (self.revealViewController().frontViewController as! UINavigationController).pushViewController(photoPickView, animated: true)
     }
     
     @IBAction func settingsTouchUpInside(sender: AnyObject)
     {
-        if((self.revealViewController().frontViewController as UINavigationController).viewControllers[0].isKindOfClass(SettingsView))
+        if((self.revealViewController().frontViewController as! UINavigationController).viewControllers[0].isKindOfClass(SettingsView))
         {
             self.revealViewController().setFrontViewPosition(FrontViewPosition.Left, animated: true)
             return
         }
         
-        let settingsView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Settings") as UIViewController
+        let settingsView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Settings") as! UIViewController
         var navC = UINavigationController(rootViewController: settingsView)
         self.revealViewController().pushFrontViewController(navC, animated: true)
     }
     
     @IBAction func searchTouchUpInside(sender: AnyObject)
     {
-        let searchView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("SearchFiltersView") as UIViewController
+        let searchView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("SearchFiltersView") as! UIViewController
         revealViewController().revealToggle(self)
-        (self.revealViewController().frontViewController as UINavigationController).pushViewController(searchView, animated: true)
+        (self.revealViewController().frontViewController as! UINavigationController).pushViewController(searchView, animated: true)
     }
     
     @IBAction func baseViewShow(sender: AnyObject)
     {
-        if((self.revealViewController().frontViewController as UINavigationController).viewControllers[0].isKindOfClass(BaseView))
+        if((self.revealViewController().frontViewController as! UINavigationController).viewControllers[0].isKindOfClass(BaseView))
         {
             self.revealViewController().setFrontViewPosition(FrontViewPosition.Left, animated: true)
             return
         }
         
-        let baseView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("BaseView") as UIViewController
+        let baseView: UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("BaseView") as! UIViewController
         var navC = UINavigationController(rootViewController: baseView)
 
         self.revealViewController().pushFrontViewController(navC, animated: true)

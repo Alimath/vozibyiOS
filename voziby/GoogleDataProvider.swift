@@ -37,7 +37,7 @@ class GoogleDataProvider
       if let json = NSJSONSerialization.JSONObjectWithData(data, options:nil, error:nil) as? NSDictionary {
         if let results = json["results"] as? NSArray {
           for rawPlace:AnyObject in results {
-            let place = GooglePlace(dictionary: rawPlace as NSDictionary, acceptedTypes: types)
+            let place = GooglePlace(dictionary: rawPlace as! NSDictionary, acceptedTypes: types)
             placesArray.append(place)
             if let reference = place.photoReference {
               self.fetchPhotoFromReference(reference) { image in
@@ -82,9 +82,9 @@ class GoogleDataProvider
     }.resume()
   }
     
-    func fetchDirectionsFromAddresses(from: String, to: String, completion: ((String?) -> Void)) -> ()
+    func fetchDirectionsFromAddresses(from: String, to: String, completion: ((String?, DisAndDur: [String]) -> Void)) -> ()
     {
-        let urlString = "https://maps.googleapis.com/maps/api/directions/json?key=\(apiKey)&origin=\(from)&destination=\(to)&mode=driving"
+        let urlString = "https://maps.googleapis.com/maps/api/directions/json?key=\(apiKey)&origin=\(from)&destination=\(to)"
         
 
         
@@ -95,9 +95,21 @@ class GoogleDataProvider
             {data, response, error in
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             var encodedRoute: String?
+            var distanceAndDuration: [String] = []
             if let json = NSJSONSerialization.JSONObjectWithData(data, options:nil, error:nil) as? [String:AnyObject] {
                 if let routes = json["routes"] as AnyObject? as? [AnyObject] {
                     if let route = routes.first as? [String : AnyObject] {
+                        if let legs: NSArray = route["legs"] as! NSArray!
+                        {
+                            let distancse = legs[0]["distance"] as! NSDictionary!
+                            let disText = distancse["text"] as! String!
+                            
+                            let duration = legs[0]["duration"] as! NSDictionary!
+                            let durText = duration["text"] as! String!
+                            
+                            distanceAndDuration.append(disText)
+                            distanceAndDuration.append(durText)
+                        }
                         if let polyline = route["overview_polyline"] as AnyObject? as? [String : String] {
                             if let points = polyline["points"] as AnyObject? as? String {
                                 encodedRoute = points
@@ -107,7 +119,7 @@ class GoogleDataProvider
                 }
             }
             dispatch_async(dispatch_get_main_queue()) {
-                completion(encodedRoute)
+                completion(encodedRoute, DisAndDur: distanceAndDuration)
             }
             }.resume()
     }

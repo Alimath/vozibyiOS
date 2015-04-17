@@ -48,7 +48,7 @@ class RegistraionViewEnd: UIViewController, UITextFieldDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent)
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent)
     {
         super.touchesBegan(touches, withEvent: event)
         NameTextField.resignFirstResponder()
@@ -63,11 +63,11 @@ class RegistraionViewEnd: UIViewController, UITextFieldDelegate
             userDefaults.setBool(false, forKey: kVZIsLoginCompleteKey)
             userDefaults.synchronize()
             
-            let name: String = userDefaults.objectForKey(kVZNameKey) as String
-            let phone: String = userDefaults.objectForKey(kVZPhoneNumberKey) as String
-            let pass: String = userDefaults.objectForKey(kVZPasswordKey) as String
-            let location: String = userDefaults.objectForKey(kVZLocationKey) as String
-            let smscode: String = userDefaults.objectForKey(kVZSMSCodeKey) as String
+            let name: String = userDefaults.objectForKey(kVZNameKey) as!String
+            let phone: String = userDefaults.objectForKey(kVZPhoneNumberKey) as!String
+            let pass: String = userDefaults.objectForKey(kVZPasswordKey) as!String
+            let location: String = userDefaults.objectForKey(kVZLocationKey) as!String
+            let smscode: String = userDefaults.objectForKey(kVZSMSCodeKey) as!String
 
             Server.sharedInstance.Register(name, location: location, username: phone, password: pass, smsCode: smscode)
             

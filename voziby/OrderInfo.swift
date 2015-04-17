@@ -56,15 +56,46 @@ class OrderInfo : NSObject
     var logos:[String] = []
     var offers: [OfferInfo] = []
     
+    var autoDescription: String = ""
     
-    override var description: String
-    {
-        let descr: String = ("ID: \(id), name: \(goodName) \ntype: \(transportType), status: \(status), budget: \(budgetBYR), cash: \(cashPayment), nocash: \(nocashPayment), card: \(cardPayment), online: \(onlinePayment), webpay: \(webpayPayment), distance: \(distance), \nfrom: \(fromAddress), \(fromStreet), \(fromHouse) - \(fromDate), \nto: \(toAddress), \(toStreet), \(toHouse) - \(toDate), \nhelpLoad: \(helpLoad), helpUnload: \(helpUnload), \nweight: \(weight), length: \(length), heigth: \(height), width: \(width), baggage: \(baggage), passengers: \(passagersCount), views: \(statViews)\nLogos: \(logos)")
-        
-        return descr
-    }
+    //важно наличие груз
+    var gidrolift: Bool = false
+    var backLoading: Bool = false
+    var sideLoading: Bool = false
+    var gidroCart: Bool = false
     
-    func SetInfo(gID: Int, gTransportType: TransportType, gStatus: OrderStatus, gBudget: Int, gCashPayment: Bool, gNocashPayment: Bool, gCardPayment: Bool, gOnlinePayment: Bool, gWebpayPayment: Bool, gDistance: Float, gFromAddress: String, gFromStreet: String, gFromHouse: String, gToAddress: String, gToStreet: String, gToHouse: String, gFromDate: [NSDate], gToDate: [NSDate], gHelpLoad: Bool, gHelpUload: Bool, gGoodName: String, gWeight: Float, gLength: Float, gHeight: Float, gWidth: Float, gBaggage: Float, gPassagersCount: Int, gStatViews: Int, gLogos: [String], gOffers: [OfferInfo])
+    //важно наличие пассажиры
+    var tv: Bool = false
+    var table: Bool = false
+    var cooler: Bool = false
+    var miniBar: Bool = false
+    var adjustableSeats: Bool = false
+    
+    //примечание авто
+    var divorcedWheel: Bool = false
+    var blockTheWheel: Bool = false
+    var inCuvette: Bool = false
+    var blockControl: Bool = false
+    var emergencyState: Bool = false
+    var damagedSuspension: Bool = false
+    //важно наличие авто
+    var winch: Bool = false
+    var gidroManipulator: Bool = false
+    var slidingPlatform: Bool = false
+    
+    //для мебели
+    var furnitureUtilization: Bool = false
+    
+    var autoDataList: [AutoData] = []
+    
+//    override var description: String
+//    {
+//        let descr: String = ("ID: \(id), name: \(goodName) \ntype: \(transportType), status: \(status), budget: \(budgetBYR), cash: \(cashPayment), nocash: \(nocashPayment), card: \(cardPayment), online: \(onlinePayment), webpay: \(webpayPayment), distance: \(distance), \nfrom: \(fromAddress), \(fromStreet), \(fromHouse) - \(fromDate), \nto: \(toAddress), \(toStreet), \(toHouse) - \(toDate), \nhelpLoad: \(helpLoad), helpUnload: \(helpUnload), \nweight: \(weight), length: \(length), heigth: \(height), width: \(width), baggage: \(baggage), passengers: \(passagersCount), views: \(statViews)\nLogos: \(logos)")
+//        
+//        return descr
+//    }
+    
+    func SetInfo(gID: Int, gTransportType: TransportType, gStatus: OrderStatus, gBudget: Int, gCashPayment: Bool, gNocashPayment: Bool, gCardPayment: Bool, gOnlinePayment: Bool, gWebpayPayment: Bool, gDistance: Float, gFromAddress: String, gFromStreet: String, gFromHouse: String, gToAddress: String, gToStreet: String, gToHouse: String, gFromDate: [NSDate], gToDate: [NSDate], gHelpLoad: Bool, gHelpUload: Bool, gGoodName: String, gWeight: Float, gLength: Float, gHeight: Float, gWidth: Float, gBaggage: Float, gPassagersCount: Int, gStatViews: Int, gLogos: [String], gOffers: [OfferInfo], gAutoDescription: String, gGidroLift: Bool, gBackLoading: Bool, gSideLoading: Bool, gGidrocart: Bool, gTV: Bool, gTable: Bool, gCooler: Bool, gMiniBar: Bool, gAdjustableSeats: Bool, gDivorcedWheel: Bool, gBlockTheWheel: Bool, gInCuvette: Bool, gBlockControll: Bool, gEmergencyState: Bool, gDamagedSuspension: Bool, gWinch: Bool, gGidroManipulator: Bool, gSlidingPlatform: Bool, gFurnitureUtilization: Bool, gAutoDataList: [AutoData])
     {
         self.id = gID
         self.transportType = gTransportType
@@ -96,6 +127,36 @@ class OrderInfo : NSObject
         self.statViews = gStatViews
         self.logos = gLogos
         self.offers = gOffers
+        self.autoDescription = gAutoDescription
+        
+        //важно наличие груз
+        self.gidrolift = gGidroLift
+        self.backLoading = gBackLoading
+        self.sideLoading = gSideLoading
+        self.gidroCart = gGidrocart
+        
+        //важно наличие пассажиры
+        self.tv = gTV
+        self.table = gTable
+        self.cooler = gCooler
+        self.miniBar = gMiniBar
+        self.adjustableSeats = gAdjustableSeats
+        
+        //примечание авто
+        self.divorcedWheel = gDivorcedWheel
+        self.blockTheWheel = gBlockTheWheel
+        self.inCuvette = gInCuvette
+        self.blockControl = gBlockControll
+        self.emergencyState = gEmergencyState
+        self.damagedSuspension = gDamagedSuspension
+        self.winch = gWinch
+        self.gidroManipulator = gGidroManipulator
+        self.slidingPlatform = gSlidingPlatform
+        
+        //мебель
+        self.furnitureUtilization = gFurnitureUtilization
+        
+        self.autoDataList = gAutoDataList
     }
     
 }
