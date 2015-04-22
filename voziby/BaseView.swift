@@ -12,6 +12,7 @@ class BaseView: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -23,7 +24,7 @@ class BaseView: UIViewController, UITableViewDelegate, UITableViewDataSource
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         self.revealViewController().rearViewRevealWidth = 300
-        if let font = UIFont(name: "HelveticaNeue", size: 25)
+        if let font = UIFont(name: "Roboto-Regular", size: 16)
         {
             self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: font, NSForegroundColorAttributeName:UIColor.darkGrayColor()]
         }
@@ -44,7 +45,6 @@ class BaseView: UIViewController, UITableViewDelegate, UITableViewDataSource
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
-        println("321321321")
         // Dispose of any resources that can be recreated.
     }
     

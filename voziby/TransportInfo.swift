@@ -1,37 +1,39 @@
 //
-//  CompanyInfo.swift
+//  TransportInfo.swift
 //  voziby
 //
-//  Created by Fedar Trukhan on 31.03.15.
+//  Created by Fedar Trukhan on 22.04.15.
 //  Copyright (c) 2015 Novum Studium. All rights reserved.
 //
 
-class CompanyInfo
+class TransportInfo
 {
     var id: Int = 0
-    var organizationType: String = ""
-    var name: String = ""
-    var ownershipAndName: String = ""
-    var logo: String = ""
-    var ratePerHour: Int = 0
-    var ratePerKM: Int = 0
-    var minimalBudget: Int = 0
-    var email: [String] = []
-    var phones: [String] = []
-    var skype: [String] = []
-    var website: String = ""
-    var slug: String = ""
-    var worktimeList: Bool = false
+    var type: Int = 0
+    var carType: Int = 0
+    var companyID: Int = 0
+    var mark: String = ""
+    var model: String = ""
+    var modelType: String = ""
+    var year: String = ""
+    var length: Int = 0
+    var width: Int = 0
+    var height: Int = 0
+    var seats: Int = 0
+    var baggage: Int = 0
+    var payload: Int = 0
+    var volume: Float = 0
+    var carsCount: Int = 0
+    var carsPayload: Int = 0
+    var temperatureFrom: Int = 0
+    var temperatureTo: Int = 0
+    var europalet: Int = 0
+    var minimalCost: Int = 0
+    var payPerHour: Int = 0
+    var payPerKm: Int = 0
     var descr: String = ""
-    var reliability: Int = 0
-    var urAddress: String = ""
-    var location: String = ""
+    var images: [UIImage] = []
     
-    var specialityPassager: Bool = false
-    var specialityCargo: Bool = false
-    var spcialityCars: Bool = false
-    var spcialityFurniture: Bool = false
-
     /// o1
     var uoGidrolift:Bool = false
     /// o11
@@ -74,17 +76,4 @@ class CompanyInfo
     var uoLoadUnload:Bool = false
     /// c2
     var uoGarbageExport:Bool = false
-    
-    
-    
-//    var specialityCargoLoad: Bool = false
-//    var specialityCargoUnload: Bool = false
-    
-    var cashPayment: Bool = false
-    var nocashPayment: Bool = false
-    var cardPayment: Bool = false
-    var onlinePayment: Bool = false
-    
-    var logoImage: UIImage? = nil
-    var countries: [String] = []
 }

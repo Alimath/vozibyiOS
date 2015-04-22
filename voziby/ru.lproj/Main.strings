@@ -1,0 +1,570 @@
+
+/* Class = "UILabel"; text = "Форма оплаты"; ObjectID = "0FP-xd-uI9"; */
+"0FP-xd-uI9.text" = "Форма оплаты";
+
+/* Class = "UILabel"; text = "Длина, см"; ObjectID = "0dn-VB-R4Q"; */
+"0dn-VB-R4Q.text" = "Длина, см";
+
+/* Class = "UILabel"; text = "Перевозка мебели (переезд)"; ObjectID = "1ZU-xp-1gX"; */
+"1ZU-xp-1gX.text" = "Перевозка мебели (переезд)";
+
+/* Class = "UILabel"; text = "0,5"; ObjectID = "1yo-9C-vVy"; */
+"1yo-9C-vVy.text" = "0,5";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "2AW-8J-PoF"; */
+"2AW-8J-PoF.title" = "Title";
+
+/* Class = "UILabel"; text = "При погрузке"; ObjectID = "2IL-s6-Qk4"; */
+"2IL-s6-Qk4.text" = "При погрузке";
+
+/* Class = "UILabel"; text = "Электронные деньги"; ObjectID = "2QZ-ge-47s"; */
+"2QZ-ge-47s.text" = "Электронные деньги";
+
+/* Class = "UILabel"; text = "Помощь грузчиков"; ObjectID = "2zv-y5-AHu"; */
+"2zv-y5-AHu.text" = "Помощь грузчиков";
+
+/* Class = "UILabel"; text = "Предложения перевозчиков"; ObjectID = "41O-Cz-Jie"; */
+"41O-Cz-Jie.text" = "Предложения перевозчиков";
+
+/* Class = "UILabel"; text = "Вес вашего груза, кг"; ObjectID = "46z-9I-Qpy"; */
+"46z-9I-Qpy.text" = "Вес вашего груза, кг";
+
+/* Class = "UILabel"; text = "Электронные деньги"; ObjectID = "47S-C6-vCK"; */
+"47S-C6-vCK.text" = "Электронные деньги";
+
+/* Class = "UILabel"; text = "Важно наличие"; ObjectID = "5EQ-AQ-0Vh"; */
+"5EQ-AQ-0Vh.text" = "Важно наличие";
+
+/* Class = "UILabel"; text = "44ч 33мин"; ObjectID = "5JO-HV-OMX"; */
+"5JO-HV-OMX.text" = "44ч 33мин";
+
+/* Class = "UITextField"; text = "Минск"; ObjectID = "5Yc-aQ-7Zz"; */
+"5Yc-aQ-7Zz.text" = "Минск";
+
+/* Class = "UILabel"; text = "Заблокировано управление"; ObjectID = "6G9-fz-7e1"; */
+"6G9-fz-7e1.text" = "Заблокировано управление";
+
+/* Class = "UITextField"; placeholder = "Откуда"; ObjectID = "7Uo-qW-AOx"; */
+"7Uo-qW-AOx.placeholder" = "Откуда";
+
+/* Class = "UITextField"; placeholder = "Вес, кг"; ObjectID = "8Ws-aQ-oyN"; */
+"8Ws-aQ-oyN.placeholder" = "Вес, кг";
+
+/* Class = "UIButton"; normalTitle = "Ещё критерии"; ObjectID = "8Yi-qP-6UZ"; */
+"8Yi-qP-6UZ.normalTitle" = "Ещё критерии";
+
+/* Class = "UILabel"; text = "Тарифы"; ObjectID = "8j9-tf-vj9"; */
+"8j9-tf-vj9.text" = "Тарифы";
+
+/* Class = "UILabel"; text = "0,5"; ObjectID = "8us-fO-8O4"; */
+"8us-fO-8O4.text" = "0,5";
+
+/* Class = "UILabel"; text = "0,5"; ObjectID = "9K6-Ez-7FB"; */
+"9K6-Ez-7FB.text" = "0,5";
+
+/* Class = "UILabel"; text = "Санпаспорт"; ObjectID = "9SD-WI-E68"; */
+"9SD-WI-E68.text" = "Санпаспорт";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "9cz-SG-rZN"; */
+"9cz-SG-rZN.text" = "3";
+
+/* Class = "UILabel"; text = "Наличные деньги"; ObjectID = "9dZ-wZ-hsv"; */
+"9dZ-wZ-hsv.text" = "Наличные деньги";
+
+/* Class = "UILabel"; text = "Дворцовый Вал, 12к1"; ObjectID = "9fl-5h-g3H"; */
+"9fl-5h-g3H.text" = "Дворцовый Вал, 12к1";
+
+/* Class = "UILabel"; text = "Пластиковая карта по терминалу"; ObjectID = "9iE-eH-dFT"; */
+"9iE-eH-dFT.text" = "Пластиковая карта по терминалу";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "9jr-i9-iO1"; */
+"9jr-i9-iO1.text" = "100";
+
+/* Class = "UIButton"; normalTitle = "Просмотреть ставки"; ObjectID = "A7u-mc-zok"; */
+"A7u-mc-zok.normalTitle" = "Просмотреть ставки";
+
+/* Class = "UILabel"; text = "Оповещения"; ObjectID = "APP-qI-KVj"; */
+"APP-qI-KVj.text" = "Оповещения";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "AT2-Du-WrZ"; */
+"AT2-Du-WrZ.title" = "Title";
+
+/* Class = "UITextField"; placeholder = "длина"; ObjectID = "AeW-aK-naf"; */
+"AeW-aK-naf.placeholder" = "длина";
+
+/* Class = "UILabel"; text = "Пластиковая карта по терминалу"; ObjectID = "AsQ-Kp-JOS"; */
+"AsQ-Kp-JOS.text" = "Пластиковая карта по терминалу";
+
+/* Class = "UILabel"; text = "Оторвано колесо"; ObjectID = "BCF-BF-jOI"; */
+"BCF-BF-jOI.text" = "Оторвано колесо";
+
+/* Class = "UILabel"; text = "Задняя загрузка"; ObjectID = "Bne-5B-sWr"; */
+"Bne-5B-sWr.text" = "Задняя загрузка";
+
+/* Class = "UILabel"; text = "12.000 BYR"; ObjectID = "CQn-Su-fun"; */
+"CQn-Su-fun.text" = "12.000 BYR";
+
+/* Class = "UILabel"; text = "Пассажирский"; ObjectID = "Cet-j4-pUt"; */
+"Cet-j4-pUt.text" = "Пассажирский";
+
+/* Class = "UIButton"; normalTitle = "Забыли пароль?"; ObjectID = "Co1-8y-cL6"; */
+"Co1-8y-cL6.normalTitle" = "Забыли пароль?";
+
+/* Class = "UILabel"; text = "Утилизация мебели"; ObjectID = "Cx5-gg-pAj"; */
+"Cx5-gg-pAj.text" = "Утилизация мебели";
+
+/* Class = "UILabel"; text = "Грузовой"; ObjectID = "Dfz-Hn-4Lu"; */
+"Dfz-Hn-4Lu.text" = "Грузовой";
+
+/* Class = "UILabel"; text = "Боковая загрузка"; ObjectID = "ECe-UR-dqi"; */
+"ECe-UR-dqi.text" = "Боковая загрузка";
+
+/* Class = "UILabel"; text = "Тарифы"; ObjectID = "Fah-U0-rD7"; */
+"Fah-U0-rD7.text" = "Тарифы";
+
+/* Class = "UILabel"; text = "Карта по терминалу"; ObjectID = "GFq-Yf-ZeP"; */
+"GFq-Yf-ZeP.text" = "Карта по терминалу";
+
+/* Class = "UILabel"; text = "Мин. заказ"; ObjectID = "GTY-wS-HpX"; */
+"GTY-wS-HpX.text" = "Мин. заказ";
+
+/* Class = "UILabel"; text = "Помощь грузчиков"; ObjectID = "Ghn-uK-oco"; */
+"Ghn-uK-oco.text" = "Помощь грузчиков";
+
+/* Class = "UILabel"; text = "ср 11.03.14 - чт 12.03.14\nсб 14.03.14"; ObjectID = "H7Q-dG-WaA"; */
+"H7Q-dG-WaA.text" = "ср 11.03.14 - чт 12.03.14\nсб 14.03.14";
+
+/* Class = "UILabel"; text = "Аварийное состояние"; ObjectID = "H8f-AS-rH4"; */
+"H8f-AS-rH4.text" = "Аварийное состояние";
+
+/* Class = "UILabel"; text = "100 BYR"; ObjectID = "HOm-rV-yPp"; */
+"HOm-rV-yPp.text" = "100 BYR";
+
+/* Class = "UITextField"; text = "+375(__)___-__-__"; ObjectID = "HeU-5g-BuB"; */
+"HeU-5g-BuB.text" = "+375(__)___-__-__";
+
+/* Class = "UILabel"; text = "Санпаспорт"; ObjectID = "Hob-cp-xVC"; */
+"Hob-cp-xVC.text" = "Санпаспорт";
+
+/* Class = "UILabel"; text = "Форма оплаты"; ObjectID = "HuS-dc-eRx"; */
+"HuS-dc-eRx.text" = "Форма оплаты";
+
+/* Class = "UILabel"; text = "Перевозка авто (эвакуация)"; ObjectID = "I7j-1u-eqV"; */
+"I7j-1u-eqV.text" = "Перевозка авто (эвакуация)";
+
+/* Class = "UITextField"; placeholder = "высота"; ObjectID = "ILJ-Wq-9g6"; */
+"ILJ-Wq-9g6.placeholder" = "высота";
+
+/* Class = "UILabel"; text = "Вес, кг"; ObjectID = "Ic8-8H-p08"; */
+"Ic8-8H-p08.text" = "Вес, кг";
+
+/* Class = "UILabel"; text = "Нахожусь"; ObjectID = "IyB-JE-Dg2"; */
+"IyB-JE-Dg2.text" = "Нахожусь";
+
+/* Class = "UILabel"; text = "Регулируемые сиденья"; ObjectID = "Jxm-9e-IPB"; */
+"Jxm-9e-IPB.text" = "Регулируемые сиденья";
+
+/* Class = "UILabel"; text = "360.000 BYR"; ObjectID = "K6G-43-20u"; */
+"K6G-43-20u.text" = "360.000 BYR";
+
+/* Class = "UILabel"; text = "360.000 BYR"; ObjectID = "KNI-Y1-U5e"; */
+"KNI-Y1-U5e.text" = "360.000 BYR";
+
+/* Class = "UILabel"; text = "Услуги перевозчика"; ObjectID = "KXq-h1-LJi"; */
+"KXq-h1-LJi.text" = "Услуги перевозчика";
+
+/* Class = "UILabel"; text = "4"; ObjectID = "Kzj-ur-dbx"; */
+"Kzj-ur-dbx.text" = "4";
+
+/* Class = "UILabel"; text = "За 1 час от"; ObjectID = "LSy-g0-IYY"; */
+"LSy-g0-IYY.text" = "За 1 час от";
+
+/* Class = "UILabel"; text = "Федор"; ObjectID = "LTe-AI-dzs"; */
+"LTe-AI-dzs.text" = "Федор";
+
+/* Class = "UILabel"; text = "С 20 октября по 20 ноября скидки\rна все услуги доставки 25%.\rПоспешите, все дела. Кто не успел,\rтот опоздал. Потом будете платить\rбольше. С 20 октября по 20 ноября"; ObjectID = "Ll6-dc-krB"; */
+"Ll6-dc-krB.text" = "С 20 октября по 20 ноября скидки\rна все услуги доставки 25%.\rПоспешите, все дела. Кто не успел,\rтот опоздал. Потом будете платить\rбольше. С 20 октября по 20 ноября";
+
+/* Class = "UILabel"; text = "Бюджет"; ObjectID = "MCn-Qs-yH1"; */
+"MCn-Qs-yH1.text" = "Бюджет";
+
+/* Class = "UIButton"; normalTitle = "Принятые"; ObjectID = "MIQ-zw-iRz"; */
+"MIQ-zw-iRz.normalTitle" = "Принятые";
+
+/* Class = "UILabel"; text = "Предложили"; ObjectID = "MTT-EM-8Li"; */
+"MTT-EM-8Li.text" = "Предложили";
+
+/* Class = "UILabel"; text = "ср 11.03.14 - чт 12.03.14\nсб 14.03.14"; ObjectID = "MgL-o9-D3C"; */
+"MgL-o9-D3C.text" = "ср 11.03.14 - чт 12.03.14\nсб 14.03.14";
+
+/* Class = "UILabel"; text = "Гидролифт"; ObjectID = "O6G-BF-coj"; */
+"O6G-BF-coj.text" = "Гидролифт";
+
+/* Class = "UILabel"; text = "Высота, см"; ObjectID = "OOZ-2H-6xT"; */
+"OOZ-2H-6xT.text" = "Высота, см";
+
+/* Class = "UITextField"; placeholder = "Куда"; ObjectID = "OQf-mA-E4g"; */
+"OQf-mA-E4g.placeholder" = "Куда";
+
+/* Class = "UILabel"; text = "12.000 BYR"; ObjectID = "PI6-sp-ZbA"; */
+"PI6-sp-ZbA.text" = "12.000 BYR";
+
+/* Class = "UILabel"; text = "Карта по Webpay"; ObjectID = "PNz-S6-qr9"; */
+"PNz-S6-qr9.text" = "Карта по Webpay";
+
+/* Class = "UITextField"; placeholder = "1 км"; ObjectID = "PPM-Qq-4IV"; */
+"PPM-Qq-4IV.placeholder" = "1 км";
+
+/* Class = "UILabel"; text = "Наличные деньги"; ObjectID = "Pvd-yX-gfK"; */
+"Pvd-yX-gfK.text" = "Наличные деньги";
+
+/* Class = "UILabel"; text = " Телефон пользователя"; ObjectID = "QLU-zS-Wii"; */
+"QLU-zS-Wii.text" = " Телефон пользователя";
+
+/* Class = "UILabel"; text = "Задняя загрузка"; ObjectID = "QNg-qk-lVb"; */
+"QNg-qk-lVb.text" = "Задняя загрузка";
+
+/* Class = "UILabel"; text = "Введите номер Вашего телефона"; ObjectID = "QqH-Mj-J1H"; */
+"QqH-Mj-J1H.text" = "Введите номер Вашего телефона";
+
+/* Class = "UILabel"; text = "Помощь грузчиков"; ObjectID = "QqS-pv-oDe"; */
+"QqS-pv-oDe.text" = "Помощь грузчиков";
+
+/* Class = "UILabel"; text = "5 BYR"; ObjectID = "Qql-BV-b5h"; */
+"Qql-BV-b5h.text" = "5 BYR";
+
+/* Class = "UILabel"; text = "Электронные деньги"; ObjectID = "R3d-qV-FtJ"; */
+"R3d-qV-FtJ.text" = "Электронные деньги";
+
+/* Class = "UITextField"; placeholder = "Номер телефона"; ObjectID = "R4C-6d-9gR"; */
+"R4C-6d-9gR.placeholder" = "Номер телефона";
+
+/* Class = "UILabel"; text = "Безналичный расчет"; ObjectID = "RJV-aU-peo"; */
+"RJV-aU-peo.text" = "Безналичный расчет";
+
+/* Class = "UILabel"; text = "Лебёдка"; ObjectID = "RNy-nP-XtH"; */
+"RNy-nP-XtH.text" = "Лебёдка";
+
+/* Class = "UILabel"; text = "Описание"; ObjectID = "RQu-qv-Ucx"; */
+"RQu-qv-Ucx.text" = "Описание";
+
+/* Class = "UILabel"; text = "Контакты"; ObjectID = "Rzp-ZE-X7d"; */
+"Rzp-ZE-X7d.text" = "Контакты";
+
+/* Class = "UILabel"; text = "Опции автомобиля"; ObjectID = "Sme-QR-UDe"; */
+"Sme-QR-UDe.text" = "Опции автомобиля";
+
+/* Class = "UITextField"; placeholder = "Номер телефона"; ObjectID = "Thh-0K-qq9"; */
+"Thh-0K-qq9.placeholder" = "Номер телефона";
+
+/* Class = "UILabel"; text = "При разгрузке"; ObjectID = "TzD-Fj-bQu"; */
+"TzD-Fj-bQu.text" = "При разгрузке";
+
+/* Class = "UILabel"; text = "Пассажиров"; ObjectID = "U6A-q3-7F9"; */
+"U6A-q3-7F9.text" = "Пассажиров";
+
+/* Class = "UILabel"; text = "0,5"; ObjectID = "UJY-Ad-PUj"; */
+"UJY-Ad-PUj.text" = "0,5";
+
+/* Class = "UILabel"; text = "Холодильник"; ObjectID = "UgD-So-1v0"; */
+"UgD-So-1v0.text" = "Холодильник";
+
+/* Class = "UILabel"; text = "Сдвижная платформа"; ObjectID = "UlT-0r-ChS"; */
+"UlT-0r-ChS.text" = "Сдвижная платформа";
+
+/* Class = "UITextField"; placeholder = "Куда"; ObjectID = "VOH-Yu-fvF"; */
+"VOH-Yu-fvF.placeholder" = "Куда";
+
+/* Class = "UILabel"; text = "6"; ObjectID = "VXM-Ig-6bB"; */
+"VXM-Ig-6bB.text" = "6";
+
+/* Class = "UILabel"; text = "4"; ObjectID = "Vgs-Ex-8tF"; */
+"Vgs-Ex-8tF.text" = "4";
+
+/* Class = "UILabel"; text = "Пластиковая карта по Webpay"; ObjectID = "Vkt-ha-4gc"; */
+"Vkt-ha-4gc.text" = "Пластиковая карта по Webpay";
+
+/* Class = "UILabel"; text = "Безналичный расчет"; ObjectID = "Vrg-OP-BRV"; */
+"Vrg-OP-BRV.text" = "Безналичный расчет";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "WJZ-eg-wEn"; */
+"WJZ-eg-wEn.text" = "100";
+
+/* Class = "UILabel"; text = "Компании"; ObjectID = "WVq-NI-S5a"; */
+"WVq-NI-S5a.text" = "Компании";
+
+/* Class = "UILabel"; text = "Боковая загрузка"; ObjectID = "Wae-ks-9kX"; */
+"Wae-ks-9kX.text" = "Боковая загрузка";
+
+/* Class = "UIButton"; normalTitle = "Ещё критерии"; ObjectID = "Whv-u6-k44"; */
+"Whv-u6-k44.normalTitle" = "Ещё критерии";
+
+/* Class = "UILabel"; text = "Ваше имя"; ObjectID = "XQS-ga-V9q"; */
+"XQS-ga-V9q.text" = "Ваше имя";
+
+/* Class = "UILabel"; text = "Возможность погрузки"; ObjectID = "ZXl-qz-xz6"; */
+"ZXl-qz-xz6.text" = "Возможность погрузки";
+
+/* Class = "UILabel"; text = "Заблокировано колесо"; ObjectID = "a9I-KM-mwC"; */
+"a9I-KM-mwC.text" = "Заблокировано колесо";
+
+/* Class = "UILabel"; text = "Гидротележка"; ObjectID = "aBV-Nu-1BV"; */
+"aBV-Nu-1BV.text" = "Гидротележка";
+
+/* Class = "UILabel"; text = "Карта по терминалу"; ObjectID = "b8B-1E-G6h"; */
+"b8B-1E-G6h.text" = "Карта по терминалу";
+
+/* Class = "UILabel"; text = "Мини-бар"; ObjectID = "bGp-ub-urr"; */
+"bGp-ub-urr.text" = "Мини-бар";
+
+/* Class = "UILabel"; text = "Повреждена подвеска"; ObjectID = "bQ2-z1-IuK"; */
+"bQ2-z1-IuK.text" = "Повреждена подвеска";
+
+/* Class = "UILabel"; text = "Путрович"; ObjectID = "bVQ-ub-mXK"; */
+"bVQ-ub-mXK.text" = "Путрович";
+
+/* Class = "UILabel"; text = "Комсомольская, 48"; ObjectID = "bdN-ni-9TH"; */
+"bdN-ni-9TH.text" = "Комсомольская, 48";
+
+/* Class = "UILabel"; text = "Форма оплаты"; ObjectID = "byV-a7-Gry"; */
+"byV-a7-Gry.text" = "Форма оплаты";
+
+/* Class = "UILabel"; text = "Наличные деньги"; ObjectID = "byV-hN-LmB"; */
+"byV-hN-LmB.text" = "Наличные деньги";
+
+/* Class = "UILabel"; text = "Габариты вашего груза, см."; ObjectID = "bzf-11-3TG"; */
+"bzf-11-3TG.text" = "Габариты вашего груза, см.";
+
+/* Class = "UILabel"; text = "Гидролифт"; ObjectID = "cKW-d0-XYr"; */
+"cKW-d0-XYr.text" = "Гидролифт";
+
+/* Class = "UITextField"; placeholder = "Введите старый пароль"; ObjectID = "cNo-y7-fJV"; */
+"cNo-y7-fJV.placeholder" = "Введите старый пароль";
+
+/* Class = "UILabel"; text = "Надёжность 74%"; ObjectID = "cza-Ky-f2j"; */
+"cza-Ky-f2j.text" = "Надёжность 74%";
+
+/* Class = "UITextField"; placeholder = "длина"; ObjectID = "d4w-iM-qzP"; */
+"d4w-iM-qzP.placeholder" = "длина";
+
+/* Class = "UITextField"; placeholder = "Введите новый пароль"; ObjectID = "d7N-f6-00P"; */
+"d7N-f6-00P.placeholder" = "Введите новый пароль";
+
+/* Class = "UILabel"; text = "Выберите тип перевозки"; ObjectID = "dCs-5p-uND"; */
+"dCs-5p-uND.text" = "Выберите тип перевозки";
+
+/* Class = "UILabel"; text = "Санкт-Петербург,"; ObjectID = "dEc-gA-eHG"; */
+"dEc-gA-eHG.text" = "Санкт-Петербург,";
+
+/* Class = "UITextField"; placeholder = "Вес, кг"; ObjectID = "dar-A0-AAp"; */
+"dar-A0-AAp.placeholder" = "Вес, кг";
+
+/* Class = "UILabel"; text = "За 1 час."; ObjectID = "dvW-Tz-G1b"; */
+"dvW-Tz-G1b.text" = "За 1 час.";
+
+/* Class = "UILabel"; text = "Услуги перевозчика"; ObjectID = "e1J-yT-dvJ"; */
+"e1J-yT-dvJ.text" = "Услуги перевозчика";
+
+/* Class = "UILabel"; text = "В кювете"; ObjectID = "eLc-pr-OXD"; */
+"eLc-pr-OXD.text" = "В кювете";
+
+/* Class = "UILabel"; text = "География"; ObjectID = "eSb-Cj-0eg"; */
+"eSb-Cj-0eg.text" = "География";
+
+/* Class = "UITextField"; placeholder = "1 км"; ObjectID = "f5J-4b-41s"; */
+"f5J-4b-41s.placeholder" = "1 км";
+
+/* Class = "UILabel"; text = "За 1 км."; ObjectID = "fPR-ie-f7t"; */
+"fPR-ie-f7t.text" = "За 1 км.";
+
+/* Class = "UILabel"; text = "Телевизор"; ObjectID = "fPa-sn-sjF"; */
+"fPa-sn-sjF.text" = "Телевизор";
+
+/* Class = "UIButton"; normalTitle = "Разместить"; ObjectID = "fYM-bo-Z8b"; */
+"fYM-bo-Z8b.normalTitle" = "Разместить";
+
+/* Class = "UITextField"; placeholder = "1 час"; ObjectID = "g9W-t3-Fim"; */
+"g9W-t3-Fim.placeholder" = "1 час";
+
+/* Class = "UITextField"; placeholder = "Введите ваш город"; ObjectID = "gdT-FP-LVy"; */
+"gdT-FP-LVy.placeholder" = "Введите ваш город";
+
+/* Class = "UILabel"; text = "Боковая загрузка"; ObjectID = "giC-pQ-UYK"; */
+"giC-pQ-UYK.text" = "Боковая загрузка";
+
+/* Class = "UITextField"; placeholder = "Номер телефона"; ObjectID = "gnc-kZ-TaU"; */
+"gnc-kZ-TaU.placeholder" = "Номер телефона";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "gtI-Xf-TYX"; */
+"gtI-Xf-TYX.text" = "Title";
+
+/* Class = "UILabel"; text = "4"; ObjectID = "h0l-yR-FjH"; */
+"h0l-yR-FjH.text" = "4";
+
+/* Class = "UITextField"; placeholder = "ширина"; ObjectID = "hiA-U5-Rum"; */
+"hiA-U5-Rum.placeholder" = "ширина";
+
+/* Class = "UILabel"; text = "Специальность"; ObjectID = "hwM-00-CZz"; */
+"hwM-00-CZz.text" = "Специальность";
+
+/* Class = "UILabel"; text = "Электронные деньги"; ObjectID = "hzp-em-zBI"; */
+"hzp-em-zBI.text" = "Электронные деньги";
+
+/* Class = "UILabel"; text = "Ленинградская область, Россия"; ObjectID = "iRw-69-EvQ"; */
+"iRw-69-EvQ.text" = "Ленинградская область, Россия";
+
+/* Class = "UITextField"; placeholder = "ширина"; ObjectID = "ize-0I-fQ7"; */
+"ize-0I-fQ7.placeholder" = "ширина";
+
+/* Class = "UILabel"; text = "За 1 км. от"; ObjectID = "j88-uR-aXH"; */
+"j88-uR-aXH.text" = "За 1 км. от";
+
+/* Class = "UILabel"; text = "+375(44)000-00-00"; ObjectID = "jAv-Th-UGJ"; */
+"jAv-Th-UGJ.text" = "+375(44)000-00-00";
+
+/* Class = "UILabel"; text = "Наличные деньги"; ObjectID = "jUs-mC-HbM"; */
+"jUs-mC-HbM.text" = "Наличные деньги";
+
+/* Class = "UITextField"; placeholder = "example@mail.com"; ObjectID = "k2j-FQ-j9P"; */
+"k2j-FQ-j9P.placeholder" = "example@mail.com";
+
+/* Class = "UILabel"; text = "Ширина, см"; ObjectID = "kOb-37-mPW"; */
+"kOb-37-mPW.text" = "Ширина, см";
+
+/* Class = "UIBarButtonItem"; title = "Сохранить"; ObjectID = "kPj-sN-PDQ"; */
+"kPj-sN-PDQ.title" = "Сохранить";
+
+/* Class = "UITextField"; placeholder = "1 час"; ObjectID = "khe-xl-Ukx"; */
+"khe-xl-Ukx.placeholder" = "1 час";
+
+/* Class = "UIButton"; normalTitle = "           Добавить объявление    "; ObjectID = "koc-OU-WFa"; */
+"koc-OU-WFa.normalTitle" = "           Добавить объявление    ";
+
+/* Class = "UILabel"; text = "Опции автомобиля"; ObjectID = "ksu-Cc-85Y"; */
+"ksu-Cc-85Y.text" = "Опции автомобиля";
+
+/* Class = "UITextField"; text = "Ваше Имя"; ObjectID = "l9u-Kb-Ucr"; */
+"l9u-Kb-Ucr.text" = "Ваше Имя";
+
+/* Class = "UILabel"; text = "Гидроманипулятор"; ObjectID = "mDY-hb-qL4"; */
+"mDY-hb-qL4.text" = "Гидроманипулятор";
+
+/* Class = "UILabel"; text = "100 BYR"; ObjectID = "mrK-rM-bY7"; */
+"mrK-rM-bY7.text" = "100 BYR";
+
+/* Class = "UILabel"; text = "Москва,"; ObjectID = "mrq-oc-WC0"; */
+"mrq-oc-WC0.text" = "Москва,";
+
+/* Class = "UILabel"; text = "Паллет"; ObjectID = "nGt-Gb-C5e"; */
+"nGt-Gb-C5e.text" = "Паллет";
+
+/* Class = "UIButton"; normalTitle = "Выйти из профиля"; ObjectID = "oFq-tD-9di"; */
+"oFq-tD-9di.normalTitle" = "Выйти из профиля";
+
+/* Class = "UILabel"; text = "Вес вашего груза, кг"; ObjectID = "oII-ES-p63"; */
+"oII-ES-p63.text" = "Вес вашего груза, кг";
+
+/* Class = "UILabel"; text = "0,5"; ObjectID = "oVZ-jM-VBR"; */
+"oVZ-jM-VBR.text" = "0,5";
+
+/* Class = "UILabel"; text = "Грузоперевозки сборных и комплектных грузов по Минску и всей Беларуси."; ObjectID = "od2-gi-2w0"; */
+"od2-gi-2w0.text" = "Грузоперевозки сборных и комплектных грузов по Минску и всей Беларуси.";
+
+/* Class = "UILabel"; text = "Авто"; ObjectID = "ojQ-E1-qbl"; */
+"ojQ-E1-qbl.text" = "Авто";
+
+/* Class = "UILabel"; text = "Примечание"; ObjectID = "otS-x8-IgM"; */
+"otS-x8-IgM.text" = "Примечание";
+
+/* Class = "UILabel"; text = "Габариты вашего груза, см."; ObjectID = "p88-Gk-QFt"; */
+"p88-Gk-QFt.text" = "Габариты вашего груза, см.";
+
+/* Class = "UILabel"; text = "Строительного мусора"; ObjectID = "pSG-CH-QsB"; */
+"pSG-CH-QsB.text" = "Строительного мусора";
+
+/* Class = "UITextField"; placeholder = "Пароль"; ObjectID = "qfl-C0-aOw"; */
+"qfl-C0-aOw.placeholder" = "Пароль";
+
+/* Class = "UILabel"; text = "Безналичный расчет"; ObjectID = "qne-WT-EQe"; */
+"qne-WT-EQe.text" = "Безналичный расчет";
+
+/* Class = "UILabel"; text = "Гидролифт"; ObjectID = "qsG-np-UgK"; */
+"qsG-np-UgK.text" = "Гидролифт";
+
+/* Class = "UITextField"; placeholder = "Повторите новый пароль"; ObjectID = "r6Q-Fh-K3c"; */
+"r6Q-Fh-K3c.placeholder" = "Повторите новый пароль";
+
+/* Class = "UILabel"; text = "Пассажирские перевозки"; ObjectID = "rhw-2s-TzR"; */
+"rhw-2s-TzR.text" = "Пассажирские перевозки";
+
+/* Class = "UILabel"; text = "Московская область, Россия"; ObjectID = "rvh-YF-xru"; */
+"rvh-YF-xru.text" = "Московская область, Россия";
+
+/* Class = "UILabel"; text = "Карта по Webpay"; ObjectID = "rxi-s7-iLQ"; */
+"rxi-s7-iLQ.text" = "Карта по Webpay";
+
+/* Class = "UITextField"; placeholder = "Ваше имя"; ObjectID = "s0U-WT-MNR"; */
+"s0U-WT-MNR.placeholder" = "Ваше имя";
+
+/* Class = "UILabel"; text = "0,5"; ObjectID = "s1s-y4-taT"; */
+"s1s-y4-taT.text" = "0,5";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "sE6-TI-6i7"; */
+"sE6-TI-6i7.text" = "100";
+
+/* Class = "UILabel"; text = "Санкт-Петербург, Ленинградская\nобласть, Россия"; ObjectID = "sdE-eb-eWX"; */
+"sdE-eb-eWX.text" = "Санкт-Петербург, Ленинградская\nобласть, Россия";
+
+/* Class = "UILabel"; text = "Объём багажа, л"; ObjectID = "tQd-Du-6sn"; */
+"tQd-Du-6sn.text" = "Объём багажа, л";
+
+/* Class = "UILabel"; text = "Грузовые перевозки"; ObjectID = "tYy-gT-XR0"; */
+"tYy-gT-XR0.text" = "Грузовые перевозки";
+
+/* Class = "UITextField"; placeholder = "высота"; ObjectID = "uRz-sI-Sff"; */
+"uRz-sI-Sff.placeholder" = "высота";
+
+/* Class = "UILabel"; text = "Задняя загрузка"; ObjectID = "vML-Fw-aOZ"; */
+"vML-Fw-aOZ.text" = "Задняя загрузка";
+
+/* Class = "UILabel"; text = "Строительного мусора"; ObjectID = "vZJ-eu-jW6"; */
+"vZJ-eu-jW6.text" = "Строительного мусора";
+
+/* Class = "UILabel"; text = "Объём, м"; ObjectID = "waE-b4-6dM"; */
+"waE-b4-6dM.text" = "Объём, м";
+
+/* Class = "UIButton"; normalTitle = "Новые"; ObjectID = "wcU-io-X8L"; */
+"wcU-io-X8L.normalTitle" = "Новые";
+
+/* Class = "UIButton"; normalTitle = "Регистрация"; ObjectID = "wxS-KY-i4m"; */
+"wxS-KY-i4m.normalTitle" = "Регистрация";
+
+/* Class = "UILabel"; text = "Изменение пароля"; ObjectID = "x67-sc-4nL"; */
+"x67-sc-4nL.text" = "Изменение пароля";
+
+/* Class = "UILabel"; text = "Надёжность 74%"; ObjectID = "xwI-sC-cHu"; */
+"xwI-sC-cHu.text" = "Надёжность 74%";
+
+/* Class = "UITextField"; placeholder = "Откуда"; ObjectID = "yBy-fW-ujl"; */
+"yBy-fW-ujl.placeholder" = "Откуда";
+
+/* Class = "UILabel"; text = "Набор кухонных приборов. Кастрюли, настольные приборы, дощечки, настольные ножи"; ObjectID = "yCh-bP-T7v"; */
+"yCh-bP-T7v.text" = "Набор кухонных приборов. Кастрюли, настольные приборы, дощечки, настольные ножи";
+
+/* Class = "UILabel"; text = "Форма оплаты"; ObjectID = "yIu-am-owy"; */
+"yIu-am-owy.text" = "Форма оплаты";
+
+/* Class = "UILabel"; text = "44ч 33мин"; ObjectID = "yPO-iy-FZ2"; */
+"yPO-iy-FZ2.text" = "44ч 33мин";
+
+/* Class = "UILabel"; text = "Столик"; ObjectID = "z1L-PZ-uvf"; */
+"z1L-PZ-uvf.text" = "Столик";
+
+/* Class = "UILabel"; text = "Гараж"; ObjectID = "z1i-Zu-KkA"; */
+"z1i-Zu-KkA.text" = "Гараж";
+
+/* Class = "UILabel"; text = "Безналичный расчет"; ObjectID = "zZ2-JG-jpe"; */
+"zZ2-JG-jpe.text" = "Безналичный расчет";
+
+/* Class = "UILabel"; text = "ОДО \"Дополнительный доход\""; ObjectID = "zli-3i-P8Y"; */
+"zli-3i-P8Y.text" = "ОДО \"Дополнительный доход\"";

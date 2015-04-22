@@ -15,6 +15,8 @@ var instance: Server?
 class Server
 {
     var loadedOrders: [OrderInfo] = []
+    var loadedCompanies: [CompanyInfo] = []
+    var companyTransport: [TransportInfo] = []
     
     ///A thread safe singleton object of Server class
     class var sharedInstance: Server
@@ -347,17 +349,77 @@ class Server
         }
     }
     
-    
+    func LoadTransportWithCompanyID(companyID: Int)
+    {
+        var params: [String:String] = [String:String]()
+        params.updateValue("\(companyID)", forKey: "CompanyTransport[company_id]")
+        params.updateValue("id.asc", forKey: "sort")
+        
+        var url = "/api/transport"
+        
+        net.POST(url, params: params, successHandler:
+            { (responseData) -> () in
+            let jsonDic: NSDictionary = responseData.json(error: nil)!
+            if((jsonDic.objectForKey("status") as! String) == "ok")
+            {
+                
+//                let string1 = NSString(data: responseData.data, encoding: NSUTF8StringEncoding)
+//                println("\(string1)")
+                
+                
+                self.companyTransport = self.GetTranportArrayFromServerData(jsonDic.objectForKey("data") as! [NSDictionary])
+                NSNotificationCenter.defaultCenter().postNotificationName("TransportLoadComplete", object: nil)
+            }
+            else
+            {
+            }
+            
+            }) { (error) -> () in
+                println("error: \(error)")
+        }
+    }
     
     func LoadCompaniesWithFilters(filters: [String:String], page: Int)
     {
+        if(page == 0)
+        {
+            Server.sharedInstance.loadedCompanies = []
+        }
+        var params: [String:String] =  filters
+        params.updateValue("\(page)", forKey: "page")
         var url = "/api/companies"//transport?CompanyTransport[id]=63"
-        
-        println(filters)
-        net.POST(url, params: filters, successHandler:
+//        println(filters)
+        net.POST(url, params: params, successHandler:
             { (responseData) -> () in
-                let string1 = NSString(data: responseData.data, encoding: NSUTF8StringEncoding)
-                println("\(string1)")
+                let jsonDic: NSDictionary = responseData.json(error: nil)!
+                if((jsonDic.objectForKey("status") as! String) == "ok")
+                {
+                    
+                    let string1 = NSString(data: responseData.data, encoding: NSUTF8StringEncoding)
+//                    println("\(string1)")   
+
+                    
+                    var companiesArray = self.GetCompaniesArrayFromServerData(jsonDic.objectForKey("data") as! [NSDictionary])
+
+                    if(companiesArray.count > 0)
+                    {
+                        for item in companiesArray
+                        {
+                            Server.sharedInstance.loadedCompanies.append(item)
+                        }
+                        NSNotificationCenter.defaultCenter().postNotificationName("CompaniesLoad", object: nil)
+                    }
+                    else
+                    {
+                        NSNotificationCenter.defaultCenter().postNotificationName("LastPageReached", object: nil)
+                    }
+                    
+
+                }
+                else
+                {
+                }
+                
             }) { (error) -> () in
                 println("error: \(error)")
         }
@@ -401,6 +463,403 @@ class Server
         retUserInfo.logoPath = logo
         
         return retUserInfo
+    }
+    
+    func GetTranportArrayFromServerData(serverData: [NSDictionary]) -> [TransportInfo]
+    {
+        var arrayWithTransport: [TransportInfo] = []
+        
+        for transport in serverData
+        {
+            var transportInfo: TransportInfo = TransportInfo()
+            
+            if let id = transport.objectForKey("id")!.integerValue
+            {
+                transportInfo.id = id
+            }
+            if let type = transport.objectForKey("type")!.integerValue
+            {
+                transportInfo.type = type
+            }
+            if let carType = transport.objectForKey("car_type")!.integerValue
+            {
+                transportInfo.carType = carType
+            }
+            if let companyID = transport.objectForKey("company_id")!.integerValue
+            {
+                transportInfo.companyID = companyID
+            }
+            if let mark = transport.objectForKey("mark") as? String
+            {
+                transportInfo.mark = mark
+            }
+            if let model = transport.objectForKey("model") as? String
+            {
+                transportInfo.model = model
+            }
+            if let modelType = transport.objectForKey("modeltype") as? String
+            {
+                transportInfo.modelType = modelType
+            }
+            if let year = transport.objectForKey("year") as? String
+            {
+                transportInfo.year = year
+            }
+            if let length = transport.objectForKey("length")!.integerValue
+            {
+                transportInfo.length = length
+            }
+            if let width = transport.objectForKey("width")!.integerValue
+            {
+                transportInfo.width = width
+            }
+            if let height = transport.objectForKey("height")!.integerValue
+            {
+                transportInfo.height = height
+            }
+            if let seats = transport.objectForKey("seats")!.integerValue
+            {
+                transportInfo.seats = seats
+            }
+            if let baggage = transport.objectForKey("baggage")!.integerValue
+            {
+                transportInfo.baggage = baggage
+            }
+            if let payload = transport.objectForKey("payload")!.integerValue
+            {
+                transportInfo.payload = payload
+            }
+            if let volume = transport.objectForKey("volume")!.floatValue
+            {
+                transportInfo.volume = volume
+            }
+            if let carsCount = transport.objectForKey("cars_count")!.integerValue
+            {
+                transportInfo.carsCount = carsCount
+            }
+            if let carsPayload = transport.objectForKey("cars_payload")!.integerValue
+            {
+                transportInfo.carsPayload = carsPayload
+            }
+            if let temperatureFrom = transport.objectForKey("temperature_from")!.integerValue
+            {
+                transportInfo.temperatureFrom = temperatureFrom
+            }
+            if let temperatureTo = transport.objectForKey("temperature_to")!.integerValue
+            {
+                transportInfo.temperatureTo = temperatureTo
+            }
+            if let europalet = transport.objectForKey("europalet")!.integerValue
+            {
+                transportInfo.europalet = europalet
+            }
+            if let minimalCost = transport.objectForKey("minimal_cost")!.integerValue
+            {
+                transportInfo.minimalCost = minimalCost
+            }
+            if let payPerHour = transport.objectForKey("payPerHour")!.integerValue
+            {
+                transportInfo.payPerHour = payPerHour
+            }
+            if let payPerKm = transport.objectForKey("payPerKm")!.integerValue
+            {
+                transportInfo.payPerKm = payPerKm
+            }
+            if let description = transport.objectForKey("description") as? String
+            {
+                transportInfo.descr = description
+            }
+            
+            if let uniqueOptions = transport.objectForKey("unique_options") as? [[String:String]]
+            {
+                for item in uniqueOptions
+                {
+                    switch (item[item.indexForKey("id")!].1)
+                    {
+                    case "o1":
+                        transportInfo.uoGidrolift = true
+                    case "o11":
+                        transportInfo.uoTable = true
+                    case "o12":
+                        transportInfo.uoRegSidenija = true
+                    case "o13":
+                        transportInfo.uoCooler = true
+                    case "o14":
+                        transportInfo.uoWC = true
+                    case "o15":
+                        transportInfo.uoWiFi = true
+                        
+                    case "o16":
+                        transportInfo.uoFurnitureUtil = true
+                    case "c3":
+                        transportInfo.uoFurnitureUtil = true
+                        
+                    case "o17":
+                        transportInfo.uoFurniturePack = true
+                    case "c4":
+                        transportInfo.uoFurniturePack = true
+                        
+                    case "o18":
+                        transportInfo.uoFurnitureAssembly = true
+                    case "c5":
+                        transportInfo.uoFurnitureAssembly = true
+                        
+                    case "o19":
+                        transportInfo.uoCleanRoom = true
+                    case "c6":
+                        transportInfo.uoCleanRoom = true
+                        
+                    case "o2":
+                        transportInfo.uoTV = true
+                    case "o20":
+                        transportInfo.uoLebedka = true
+                    case "o21":
+                        transportInfo.uoSdvigPlatform = true
+                    case "o22":
+                        transportInfo.uoGidromanipulator = true
+                    case "o27":
+                        transportInfo.uoSanpasport = true
+                    case "o29":
+                        transportInfo.uoTopZagruzka = true
+                    case "o4":
+                        transportInfo.uoMiniBar = true
+                    case "o6":
+                        transportInfo.uoZadZagruzka = true
+                    case "o7":
+                        transportInfo.uoBokZagruzka = true
+                    case "c1":
+                        transportInfo.uoLoadUnload = true
+                    case "c2":
+                        transportInfo.uoGarbageExport = true
+                    default:
+                        println(item[item.indexForKey("id")!].1)
+                    }
+                }
+            }
+            
+            if let logoData = transport.objectForKey("images_content") as? [String]
+            {
+                for logo in logoData
+                {
+                    if let imageData = NSData(base64EncodedString: logo, options: NSDataBase64DecodingOptions.allZeros)
+                    {
+                        if let image = UIImage(data: imageData)
+                        {
+                            transportInfo.images.append(image)
+                        }
+                    }
+                }
+            }
+            
+            arrayWithTransport.append(transportInfo)
+            
+        }
+        
+        return arrayWithTransport
+    }
+    
+    func GetCompaniesArrayFromServerData(serverData: [NSDictionary]) -> [CompanyInfo]
+    {
+        var arrayWithCompanies: [CompanyInfo] = []
+        
+        for company in serverData
+        {
+            var companyInfo: CompanyInfo = CompanyInfo()
+            
+            if let id = company.objectForKey("id")!.integerValue
+            {
+                companyInfo.id = id
+            }
+            if let organizationType = company.objectForKey("organization_type") as? String
+            {
+                companyInfo.organizationType = organizationType
+            }
+            if let name = company.objectForKey("name") as? String
+            {
+                companyInfo.name = name
+            }
+            if let ownershipAndName = company.objectForKey("ownership_and_name") as? String
+            {
+                companyInfo.ownershipAndName = ownershipAndName
+            }
+            if let logo = company.objectForKey("logo") as? String
+            {
+                companyInfo.logo = logo
+            }
+            if let perh = company.objectForKey("rate_per_hour")!.integerValue
+            {
+                companyInfo.ratePerHour = perh
+            }
+            if let perkm = company.objectForKey("rate_per_km")!.integerValue
+            {
+                companyInfo.ratePerKM = perkm
+            }
+            if let minb = company.objectForKey("minmal_budget")!.integerValue
+            {
+                companyInfo.minimalBudget = minb
+            }
+            if let emails = company.objectForKey("email") as? [String]
+            {
+                companyInfo.email = emails
+            }
+            if let phones = company.objectForKey("phones") as? [String]
+            {
+                companyInfo.phones = phones
+            }
+            if let skypes = company.objectForKey("skype") as? [String]
+            {
+                companyInfo.skype = skypes
+            }
+            if let webs = company.objectForKey("website") as? String
+            {
+                companyInfo.website = webs
+            }
+            if let slug = company.objectForKey("slug") as? String
+            {
+                companyInfo.slug = slug
+            }
+            if let location = company.objectForKey("location") as? String
+            {
+                companyInfo.location = location
+            }
+            if let workTimeList = company.objectForKey("worktimeList")!.boolValue
+            {
+                companyInfo.worktimeList = workTimeList
+            }
+            if let description = company.objectForKey("description") as? String
+            {
+                companyInfo.descr = description
+            }
+//            if let reliability = company.objectForKey("reliability")!.integerValue
+//            {
+//                companyInfo.reliability = reliability
+//            }
+            if let urAddress = company.objectForKey("ur_address") as? String
+            {
+                companyInfo.urAddress = urAddress
+            }
+            if let spcialityPassager = company.objectForKey("spciality_passager")!.boolValue
+            {
+                companyInfo.specialityPassager = spcialityPassager
+            }
+            if let spcialityCargo = company.objectForKey("spciality_cargo")!.boolValue
+            {
+                companyInfo.specialityCargo = spcialityCargo
+            }
+            if let spcialityCars = company.objectForKey("spciality_cars")!.boolValue
+            {
+                companyInfo.spcialityCars = spcialityCars
+            }
+            if let spcialityFurniture = company.objectForKey("spciality_furniture")!.boolValue
+            {
+                companyInfo.spcialityFurniture = spcialityFurniture
+            }
+//            if let spcialityCargoLoad = company.objectForKey("spciality_cargo_load")!.boolValue
+//            {
+//                companyInfo.specialityCargoLoad = spcialityCargoLoad
+//            }
+//            if let spcialityCargoUnload = company.objectForKey("spciality_cargo_unload")!.boolValue
+//            {
+//                companyInfo.specialityCargoUnload = spcialityCargoUnload
+//            }
+            if let cashPayment = company.objectForKey("cash_payment")!.boolValue
+            {
+                companyInfo.cashPayment = cashPayment
+            }
+            if let noCashPayment = company.objectForKey("nocash_payment")!.boolValue
+            {
+                companyInfo.nocashPayment = noCashPayment
+            }
+            if let cardPayment = company.objectForKey("card_payment")!.boolValue
+            {
+                companyInfo.cardPayment = cardPayment
+            }
+            if let onlinePayment = company.objectForKey("online_payment")!.boolValue
+            {
+                companyInfo.onlinePayment = onlinePayment
+            }
+            if let logoData = company.objectForKey("logo_content") as? String
+            {
+                companyInfo.logoImage = UIImage(data: NSData(base64EncodedString: logoData, options: NSDataBase64DecodingOptions.allZeros)!)
+            }
+            if let countries = company.objectForKey("countries") as? [[String:String]]
+            {
+                for item in countries
+                {
+                    companyInfo.countries.append(item[item.indexForKey("name")!].1)
+                }
+            }
+            if let uniqueOptions = company.objectForKey("unique_options") as? [[String:String]]
+            {
+                for item in uniqueOptions
+                {
+                    switch (item[item.indexForKey("id")!].1)
+                    {
+                    case "o1":
+                        companyInfo.uoGidrolift = true
+                    case "o11":
+                        companyInfo.uoTable = true
+                    case "o12":
+                        companyInfo.uoRegSidenija = true
+                    case "o13":
+                        companyInfo.uoCooler = true
+                    case "o14":
+                        companyInfo.uoWC = true
+                    case "o15":
+                        companyInfo.uoWiFi = true
+                        
+                    case "o16":
+                        companyInfo.uoFurnitureUtil = true
+                    case "c3":
+                        companyInfo.uoFurnitureUtil = true
+                        
+                    case "o17":
+                        companyInfo.uoFurniturePack = true
+                    case "c4":
+                        companyInfo.uoFurniturePack = true
+                        
+                    case "o18":
+                        companyInfo.uoFurnitureAssembly = true
+                    case "c5":
+                        companyInfo.uoFurnitureAssembly = true
+                        
+                    case "o19":
+                        companyInfo.uoCleanRoom = true
+                    case "c6":
+                        companyInfo.uoCleanRoom = true
+                        
+                    case "o2":
+                        companyInfo.uoTV = true
+                    case "o20":
+                        companyInfo.uoLebedka = true
+                    case "o21":
+                        companyInfo.uoSdvigPlatform = true
+                    case "o22":
+                        companyInfo.uoGidromanipulator = true
+                    case "o27":
+                        companyInfo.uoSanpasport = true
+                    case "o29":
+                        companyInfo.uoTopZagruzka = true
+                    case "o4":
+                        companyInfo.uoMiniBar = true
+                    case "o6":
+                        companyInfo.uoZadZagruzka = true
+                    case "o7":
+                        companyInfo.uoBokZagruzka = true
+                    case "c1":
+                        companyInfo.uoLoadUnload = true
+                    case "c2":
+                        companyInfo.uoGarbageExport = true
+                    default:
+                        println(item[item.indexForKey("id")!].1)
+                    }
+                }
+            }
+        
+            arrayWithCompanies.append(companyInfo)
+        }
+        
+        return arrayWithCompanies
     }
     
     /// parse array of order infos from server to array of OrderInfo ojbects

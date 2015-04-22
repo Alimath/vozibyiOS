@@ -21,7 +21,6 @@ class OrderView: UIViewController, GMSMapViewDelegate, UIScrollViewDelegate
     var imagesIndex: Int = 0
     var path: GMSPath = GMSPath()
     var isMapOpened: Bool = false
-    
     var arrowBackImage: UIImageView = UIImageView()
     
     let net = Net(baseUrlString: "http://api.x9.sandbox.hcbogdan.com/")
@@ -279,7 +278,6 @@ class OrderView: UIViewController, GMSMapViewDelegate, UIScrollViewDelegate
         }
         navigationItem.leftBarButtonItem = backButton
         backButton.setTitlePositionAdjustment(UIOffsetMake(0, -11), forBarMetrics: UIBarMetrics.Default)
-        
         
         arrowBackImage = UIImageView(frame: CGRectMake(7, 14, 11, 18))
         arrowBackImage.image = UIImage(named: "backArrow")

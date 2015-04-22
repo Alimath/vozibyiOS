@@ -12,6 +12,7 @@ class SearchFiltersView: UIViewController, UITextFieldDelegate
 {
     let addedHeight: CGFloat = 80
     
+    
     @IBOutlet weak var ContentViewHeightConstraint: NSLayoutConstraint!
     //Cargo Type elements
     @IBOutlet weak var imageCargoIcon: UIImageView!
@@ -20,7 +21,6 @@ class SearchFiltersView: UIViewController, UITextFieldDelegate
     @IBOutlet weak var ContentScrollBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var PassengersView: UIView!
     @IBOutlet weak var MoreCriterionCargo: UIButton!
-    @IBOutlet weak var weightSlider: UISlider!
     @IBOutlet weak var TariffsTopConstraint: NSLayoutConstraint!
     
     var keyboardIsShowing: Bool = false
@@ -35,10 +35,13 @@ class SearchFiltersView: UIViewController, UITextFieldDelegate
     @IBOutlet weak var cargoWidth: TextFieldWithMargin!
     @IBOutlet weak var cargoHeight: TextFieldWithMargin!
     @IBOutlet weak var cargoWeight: TextFieldWithMargin!
+    @IBOutlet weak var cargoWeightSlider: UISlider!
     @IBOutlet weak var cargoFrom: TextFieldWithMargin!
     @IBOutlet weak var cargoTo: TextFieldWithMargin!
     @IBOutlet weak var cargo1km: TextFieldWithMargin!
+    @IBOutlet weak var cargo1kmSlider: UISlider!
     @IBOutlet weak var cargo1hour: TextFieldWithMargin!
+    @IBOutlet weak var cargo1hourSlider: UISlider!
     @IBOutlet weak var cargoLoadUnload: UISwitch!
     @IBOutlet weak var cargoGarbage: UISwitch!
     @IBOutlet weak var cargoGidrolift: UISwitch!
@@ -55,11 +58,11 @@ class SearchFiltersView: UIViewController, UITextFieldDelegate
     {
         super.viewDidLoad()
         
-        if let font = UIFont(name: "HelveticaNeue", size: 21)
+        if let font = UIFont(name: "Roboto-Regular", size: 16)
         {
             self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: font, NSForegroundColorAttributeName:UIColor.darkGrayColor()]
         }
-        self.navigationItem.title = "Фильтр поиска"
+//        self.navigationItem.title = "Фильтр поиска"
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(
@@ -189,7 +192,31 @@ class SearchFiltersView: UIViewController, UITextFieldDelegate
                 {
                     textField.text = "0"
                 }
-                self.weightSlider.value = self.cargoWeight.text.floatValue
+                self.cargoWeightSlider.value = self.cargoWeight.text.floatValue
+            }
+            if(textField.tag == 100)
+            {
+                if(textField.text.floatValue < 5000)
+                {
+                    textField.text = "5000"
+                }
+                else if (textField.text.floatValue > 15000)
+                {
+                    textField.text = "15000"
+                }
+                self.cargo1kmSlider.value = self.cargo1km.text.floatValue
+            }
+            if(textField.tag == 101)
+            {
+                if(textField.text.floatValue < 100000)
+                {
+                    textField.text = "100000"
+                }
+                else if (textField.text.floatValue > 200000)
+                {
+                    textField.text = "200000"
+                }
+                self.cargo1hourSlider.value = self.cargo1hour.text.floatValue
             }
         }
     }
@@ -211,7 +238,7 @@ class SearchFiltersView: UIViewController, UITextFieldDelegate
     
     
     // MARK: Slider delegates
-    @IBAction func changeWeight(sender: UISlider)
+    @IBAction func changeCargoWeight(sender: UISlider)
     {
         NSOperationQueue.mainQueue().addOperationWithBlock
         {
@@ -220,12 +247,32 @@ class SearchFiltersView: UIViewController, UITextFieldDelegate
         self.cargoWeight.text = "\(Int(sender.value))"
     }
     
+    @IBAction func changeCargo1km(sender: UISlider)
+    {
+        NSOperationQueue.mainQueue().addOperationWithBlock
+        {
+            self.view.endEditing(true)
+        }
+        self.cargo1km.text = "\(Int(sender.value))"
+    }
+    
+    @IBAction func changeCargo1hour(sender: UISlider)
+    {
+        NSOperationQueue.mainQueue().addOperationWithBlock
+        {
+            self.view.endEditing(true)
+        }
+        self.cargo1hour.text = "\(Int(sender.value))"
+    }
+    
     
     // MARK: Search buttons
     
     @IBAction func searchCompanies(sender: AnyObject)
     {
-        Server.sharedInstance.LoadCompaniesWithFilters(self.ParseParameters("Company"), page: 0)
+        let companiesView: CompaniesView = self.storyboard?.instantiateViewControllerWithIdentifier("CompaniesView") as! CompaniesView
+        companiesView.findingParams = self.ParseParameters("Company")
+        self.navigationController?.pushViewController(companiesView, animated: true)
     }
     
 
@@ -262,23 +309,21 @@ class SearchFiltersView: UIViewController, UITextFieldDelegate
             {
                 params.updateValue("<\(self.cargo1km.text)", forKey: "\(prefix)[rate_per_km]")
             }
-            params.updateValue("rate_per_km", forKey: "sort.asc")
+            params.updateValue("rate_per_hour.asc", forKey: "sort")
             if(self.cargo1hour.text != "")
             {
                 params.updateValue("<\(self.cargo1hour.text)", forKey: "\(prefix)[rate_per_hour]")
             }
-            params.updateValue("rate_per_km", forKey: "sort.asc")
             if(self.cargoLoadUnload.on == true)
             {
-                params.updateValue("1", forKey: "\(prefix)[spciality_cargo_unload]")
+                params.updateValue("1", forKey: "\(prefix)[options][]")
             }
             if(self.cargoGarbage.on == true)
             {
-                
+                params.updateValue("2", forKey: "\(prefix)[options][]")
             }
             if(self.cargoGidrolift.on == true)
             {
-                
             }
             if(self.cargoZadnjaPogruzka.on == true)
             {

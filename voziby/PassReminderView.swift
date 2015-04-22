@@ -28,7 +28,7 @@ class PassReminderView: UIViewController, UITextFieldDelegate
         self.navigationItem.title = "vozim.by"
         
         let backButton = UIBarButtonItem(title: "Отмена", style: UIBarButtonItemStyle.Plain, target: self, action: "Cancel")
-        navigationItem.leftBarButtonItem = backButton
+        self.navigationItem.leftBarButtonItem = backButton
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldTextChanged:", name:UITextFieldTextDidChangeNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "SMSSuccesfullySend:", name:"smssend", object: nil)
